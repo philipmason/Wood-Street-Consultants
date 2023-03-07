@@ -1,0 +1,23 @@
+/* JOBSPLIT: JOBSTARTTIME 06MAR2023:07:02:51.92 */
+/* JOBSPLIT: TASKSTARTTIME 06MAR2023:07:02:51.92 */
+/* JOBSPLIT: DATASET INPUT SEQ #C00001.PRDSALE.DATA */
+/* JOBSPLIT: LIBNAME #C00001 V9 'C:\Program Files\SASHome\SASFoundation\9.4\core\sashelp' */
+/* JOBSPLIT: CONCATMEM #C00001 SASHELP */
+/* JOBSPLIT: LIBNAME SASHELP V9 '( 'C:\Program Files\SASHome\SASFoundation\9.4\nls\en\SASCFG' 'C:\Program Files\SASHome\SASFoundation\9.4\core\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\aacomp\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\cas\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\cmp\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\graph\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\mlearning\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\spdsclient\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\stat\sashelp' )' */
+/* JOBSPLIT: DATASET INPUT SEQ #C00001.PRDSAL2.DATA */
+/* JOBSPLIT: LIBNAME #C00001 V9 'C:\Program Files\SASHome\SASFoundation\9.4\core\sashelp' */
+/* JOBSPLIT: CONCATMEM #C00001 SASHELP */
+/* JOBSPLIT: LIBNAME SASHELP V9 '( 'C:\Program Files\SASHome\SASFoundation\9.4\nls\en\SASCFG' 'C:\Program Files\SASHome\SASFoundation\9.4\core\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\aacomp\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\cas\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\cmp\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\graph\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\mlearning\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\spdsclient\sashelp' 'C:\Program Files\SASHome\SASFoundation\9.4\stat\sashelp' )' */
+/* JOBSPLIT: DATASET OUTPUT SEQ WORK.TEST.DATA */
+/* JOBSPLIT: LIBNAME WORK V9 'C:\Users\pmason\AppData\Local\Temp\SAS Temporary Files\_TD9604_ARGENXLAP3120_' */
+/* JOBSPLIT: FILE OUTPUT C:\Users\pmason\AppData\Local\Temp\SAS Temporary Files\_TD9604_ARGENXLAP3120_\example1.txt */
+/* JOBSPLIT: ELAPSED 29  */
+/* JOBSPLIT: SYSSCP WIN */
+/* JOBSPLIT: PROCNAME DATASTEP */
+/* JOBSPLIT: STEP SOURCE FOLLOWS */
+data test ;
+   set sashelp.prdsale sashelp.prdsal2 ;
+run ;
+
+/* JOBSPLIT: JOBENDTIME 06MAR2023:07:02:51.95 */
+/* JOBSPLIT: END */
