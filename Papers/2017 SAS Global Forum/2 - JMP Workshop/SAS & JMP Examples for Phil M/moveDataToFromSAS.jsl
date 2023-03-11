@@ -1,0 +1,50 @@
+﻿// ian.cox@jmp.com: 23Jun2008
+// Moving data to and from SAS
+NamesDefaultToHere(1);
+ClearGlobals();
+
+// Break any existing connection
+if (metaIsConnected(), MetaDisconnect());
+
+// Establish connection to SAS 9.3 JMPDev metadata server
+ok = MetaConnect("jmpdev.na.sas.com", 38561, "DefaultAuth", "sasdemo", "******", Prompt(IfNeeded));
+if (!ok, Beep(); Dialog("MetaConnect Failed"); Throw());
+
+// Make the connection to SAS . . .
+chosenServer = "SASApp";
+sasCon = SAS Connect(chosenServer);
+if (!IsScriptable(sasCon), Beep(); Dialog("SAS Coonection to "||chosenServer||" Failed"); Throw());
+
+// Move data to SAS . . .
+Print(sasCon << SAS Get Datasets("WORK") );
+if (IsEmpty(CurrentDataTable()), dt = Open(), dt = CurrentDataTable());
+dtn = dt << GetName;
+dtSASn = SAS Name(dtn);
+sasCon << SAS Export Data(dt, "WORK", dtSASn);
+Print( after = sasCon << SAS Get Datasets("WORK") );
+
+// Get the data back from SAS . . .
+// Method 1: Directly, using JDBC
+dt2 = SAS Import Data("WORK."||dtSASn);
+// Method 2: Often faster, by writing out to a server location accessible to the client
+//		a). First we need to get the location of the 'WORK' library, since we know we can read/write from/to that location
+path2work = sasCon << GetWorkFolder;
+//		b). Now write out the file to the server file system
+fullFName = path2work||"\"||dtSASn||".JMP";
+// 			Note the use of Eval Insert() to 'parametrise' the SAS code.
+rc = sasCon << SAS Submit( 
+			Eval Insert("\[
+					proc export data=WORK.^dtSASn^ 
+						outfile="^fullFName^"
+						dbms=jmp
+						replace;
+					run; 
+					]\"
+					);
+				);
+//		c). Open the remote file in JMP
+dt3 = Open( "\\jmpdev.na.sas.com\"||Substr(fullFName, 4, Length(fullFName)-3) );
+dt3 = Open( "\\jmpdev.na.sas.com\"||fullFName );
+
+sasCon << SAS Disconnect();
+MetaDisconnect();

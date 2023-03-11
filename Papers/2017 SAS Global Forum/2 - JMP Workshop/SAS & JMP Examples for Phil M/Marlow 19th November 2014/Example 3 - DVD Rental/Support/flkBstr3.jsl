@@ -1,0 +1,113 @@
+﻿// ian.cox@jmp.com: 25May2012
+// Part 3 of Eric Hill's'FlickBuster' Demo from SGF 2011
+// Requires you to be on the SAS network!
+
+// ********************************************************************
+// Run blocks of code in sequence and inspect the log or other output
+// ********************************************************************
+Names Default To Here( 1 );
+Clear Globals();
+
+// Custom JMP User INterface
+::customNewWin = New Window( "SparkLines Report",
+	H List Box(
+		V List Box(
+			Panel Box( "Select an age demographic:", rbAge = Radio Box( {"18 to 34", "35 to 54", "55 and up", "All"} )),
+			Panel Box( "Select marital status:", rbMaritalStatus = Radio Box( {"Single", "Married", "Either"} ) ),
+			Panel Box( "Has Children Under 12?", rbChildren = Radio Box( {"Yes", "No", "Either"} ) )
+		),
+		Panel Box( "Generate SparkLine Report",
+			Lineup Box( N Col( 1 ),
+				Button Box( "Run", ::onRun ),
+				Button Box( "Cancel", ::customNewWin << CloseWindow; Throw() ),
+				Text Box( " " ),
+				Button Box( "Help", Beep(); Print( "Not Implemented" ) )
+				)
+			)
+		)
+	);
+
+// When the user hits 'Run' . . .
+ :: OnRun = Expr(
+
+	// Close the dialog
+	 :: customNewWin << CloseWindow;
+
+	// Associative arrays are used to specify user-selections
+	aaAge = Associative Array( {{"18 to 34", "age <=  35"}, {"35 to 54", "age >= 35 and age <= 54"}, {"55 and up", "age >= 55"}} );
+	aaMarital = Associative Array( {{"Single", "Married = 0"}, {"Married", "Married = 1"}} );
+	aaChildren = Associative Array( {{"Yes", "KidsUnder12 = 1"}, {"No", "KidsUnder12 = 0"}} );
+
+	// Stub of the SQL query to be run by SAS
+	sasQuery =
+	"\[
+	proc sql;
+		create table work.genre_counts as
+			select distinct OrderYear, genre, count(*) as count
+			from flkbstr.rental_details
+			^WHERE ^WHERECLAUSE
+			group by genre, OrderYear
+			order by genre, OrderYear;
+	quit;
+	]\";
+
+	// Build the 'where' clause for SAS on the basis of the user-selections
+	whereClause = "^AGE ^AGEAND ^MARRIED ^MARRIEDAND ^CHILDREN";
+
+	bGotAge = 0;
+	bGotMarried = 0;
+	bGotChildren = 0;
+	
+	inputAgeRange = rbAge << get selected;
+	If( inputAgeRange != "All",
+		ageWhere = aaAge[inputAgeRange];
+		whereClause = Munger( whereClause, 1, "^AGE", ageWhere );
+		bGotAge = 1;
+	,
+		whereClause = Munger( whereClause, 1, "^AGE", "" )
+	);
+	
+	inputMaritalStatus = rbMaritalStatus << get selected;
+	If( inputMaritalStatus != "Either",
+		marriedWhere = aaMarital[inputMaritalStatus];
+		whereClause = Munger( whereClause, 1, "^MARRIED", marriedWhere );
+		bGotMarried = 1;
+	,
+		whereClause = Munger( whereClause, 1, "^MARRIED", "" )
+	);
+	
+	inputChildren = rbChildren << get selected;
+	If( inputChildren != "Either",
+		childrenWhere = aaChildren[inputChildren];
+		whereClause = Munger( whereClause, 1, "^CHILDREN", childrenWhere );
+		bGotChildren = 1;
+	,
+		whereClause = Munger( whereClause, 1, "^CHILDREN", "" )
+	);
+
+	If( bGotAge == 1 | bGotMarried == 1 | bGotChildren == 1,
+		sasQuery = Munger( sasQuery, 1, "^WHERE", "where" );
+		If( bGotAge == 1 & (bGotMarried == 1 | bGotChildren == 1),
+			whereClause = Munger( whereClause, 1, "^AGEAND", "and" ),
+			whereClause = Munger( whereClause, 1, "^AGEAND", "" )
+		);
+		If( bGotMarried == 1 & bGotChildren == 1,
+			whereClause = Munger( whereClause, 1, "^MARRIEDAND", "and" ),
+			whereClause = Munger( whereClause, 1, "^MARRIEDAND", "" )
+		);
+		sasQuery = Munger( sasQuery, 1, "^WHERECLAUSE", whereClause );
+	,
+		sasQuery = Munger( sasQuery, 1, "^WHERE", "" );
+		sasQuery = Munger( sasQuery, 1, "^WHERECLAUSE", "" );
+		whereClause = "All Customers";
+	);
+
+	// Show that the query and where clause are correctly formed
+	New Window( "SAS Query Compinents from User Selection",
+		Outline Box( "whereClause ", tb2 = Text Box( whereClause ) ),
+		Outline Box( "sasQuery", tb1 = Text Box( sasQuery ) )
+	);
+	tb1 << SetWrap(700) << FontColor("Blue");
+	tb2 << SetWrap(700) << FontColor("Blue");
+
+);

@@ -1,0 +1,8 @@
+1 - Can we have the Chrome browser please? 
+	If not, Firefox would be second best but would need the Firebug extension installed. 
+	Otherwise please let me know what browser we will have.
+2 - Is it possible for people to save into a sub-directory of the web-app server. 
+	On my SAS install I am putting HTML files into C:\SAS\Config\Lev1\Web\WebServer\htdocs\HOW 
+	which means I can run them through the web browser like this ... http://d351tq92/how/menu.html
+3 - Can we have Notepad++ installed on windows? It is very useful when editing HTML and javascript code.
+4 - Can we have a copy of the PROC JSON tip sheet from SAS for each person in the workshop?

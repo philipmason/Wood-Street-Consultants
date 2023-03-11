@@ -1,0 +1,40 @@
+/**
+ * @class Ext.Tab
+ * 
+ */
+@mixin extjs-tab {
+  .x-tab,
+  .x-tab button {
+    @include border-radius($tab-border-radius);
+    border-style: solid;
+    border-width: $tab-border-width;
+    background-color: $tab-base-color;
+    border-color: $tab-border-color;
+  }
+  
+  .x-tab {
+    z-index: 1;
+    margin: 2px 0 0 2px;
+    display: inline-block;
+  }
+  
+  .x-tab button {
+    display: block;
+    margin: 0;
+    font-size: 11px;
+    font-family: Helvetica;
+    padding: 3px 7px 5px;
+    border-color: rgba(255, 255, 255, .5);
+    @include background-gradient($tab-base-color, 'recessed');
+    color: darken(saturate($tab-base-color, 45%), 70%);
+  }
+  
+  .x-tab-active {
+    z-index: 3;
+  }
+  
+  .x-tab-active button {
+    font-weight: bold;
+    @include background-gradient($tab-active-base-color, 'matte');
+  }
+}

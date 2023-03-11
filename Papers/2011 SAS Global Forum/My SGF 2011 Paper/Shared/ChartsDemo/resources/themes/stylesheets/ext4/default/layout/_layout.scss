@@ -1,0 +1,91 @@
+@mixin extjs-layout {
+
+  .#{$prefix}-docked {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .#{$prefix}-box-inner {
+    overflow:hidden;
+
+    zoom:1;
+
+    position:relative;
+    left:0;
+    top:0;
+  }
+
+  .#{$prefix}-box-item {
+    position:absolute !important;
+    left:0;
+    top:0;
+  }
+
+  .#{$prefix}-box-layout-ct, .#{$prefix}-border-layout-ct {
+    overflow:hidden;
+    zoom:1;
+  }
+  
+  .#{$prefix}-overflow-hidden {
+    overflow:hidden !important;
+  }
+  
+  .#{$prefix}-abs-layout-item {
+    position: absolute;
+  }
+  
+  .#{$prefix}-border-layout-ct {
+     background-color: mix($base-color, #fff, 15);
+  }
+
+  .#{$prefix}-region-collapsed-placeholder {
+    z-index: 1;
+    padding: 5px;
+    
+    @include background-gradient($panel-base-color, 'matte', left);
+    
+    border: 1px solid;
+    @include border-radius(nth($panel-border-radius, 1));
+    
+    border-color: $panel-body-border-color;
+    
+    .#{$prefix}-box-layout-ct {
+      height: 100%;
+    }
+  }
+  
+  @if $include-no-gradients {
+    .ext-no-linear-gradient {
+      .#{$prefix}-panel-header {
+        background-image: theme-image($theme-name, 'panel/panel-bg.gif');
+        background-repeat: repeat-x;
+        background-position: 0 -1px;
+      }
+    }
+  }
+
+  .#{$prefix}-border-item {
+    z-index: 2;
+  }
+
+  .#{$prefix}-border-region-slide-in {
+      z-index: 3;
+  }
+
+  .#{$prefix}-frame-tl,
+  .#{$prefix}-frame-tr,
+  .#{$prefix}-frame-tc,
+  .#{$prefix}-frame-bl,
+  .#{$prefix}-frame-br,
+  .#{$prefix}-frame-bc {
+    overflow: hidden;
+  }
+  
+  .#{$prefix}-frame-mc {
+    position: relative;
+  }
+  
+  .x-frame-mc {
+    overflow: hidden;
+  }
+}

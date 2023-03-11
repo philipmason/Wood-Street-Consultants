@@ -1,0 +1,800 @@
+/**
+ * @class Ext.Button
+ * Used to create the base structure of an Ext.Button
+ */
+@mixin extjs-button {
+  .#{$prefix}-btn {
+    @include inline-block;
+  
+    cursor: pointer;
+    cursor: hand;
+    
+    * {
+      cursor: pointer;
+      cursor: hand;
+    }
+    
+    button,
+    table {
+      display: block;      
+      margin: 0;
+      padding: 0;      
+      border: 0;      
+      background: transparent;
+      text-align: center;
+      &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  @include x-btn(
+    /* UI + Scale */
+    'default-small',
+    
+    $button-small-border-radius,
+    $button-small-border-width,    
+    
+    $button-default-border-color,
+    $button-default-border-color-over,
+    $button-default-border-color-pressed,
+    
+    $button-small-padding,
+    
+    $button-default-background-color,
+    $button-default-background-color-over,
+    $button-default-background-color-pressed,
+    
+    $button-default-background-gradient,
+    $button-default-background-gradient-over,
+    $button-default-background-gradient-pressed,
+
+    $button-default-color,
+    $button-default-color-over,
+    $button-default-color-pressed,
+        
+    $button-small-font-size,
+    $button-small-font-size-over,
+    $button-small-font-size-pressed,
+    
+    $button-small-font-weight,
+    $button-small-font-weight-over,
+    $button-small-font-weight-pressed,
+    
+    $button-small-font-family,
+    $button-small-font-family-over,
+    $button-small-font-family-pressed
+  );
+    
+  @include x-btn(
+    'default-medium',
+    
+    $button-medium-border-radius,
+    $button-medium-border-width,    
+    
+    $button-default-border-color,
+    $button-default-border-color-over,
+    $button-default-border-color-pressed,
+    
+    $button-medium-padding,
+    
+    $button-default-background-color,
+    $button-default-background-color-over,
+    $button-default-background-color-pressed,
+    
+    $button-default-background-gradient,
+    $button-default-background-gradient-over,
+    $button-default-background-gradient-pressed,
+
+    $button-default-color,
+    $button-default-color-over,
+    $button-default-color-pressed,
+        
+    $button-medium-font-size,
+    $button-medium-font-size-over,
+    $button-medium-font-size-pressed,
+    
+    $button-medium-font-weight,
+    $button-medium-font-weight-over,
+    $button-medium-font-weight-pressed,
+    
+    $button-medium-font-family,
+    $button-medium-font-family-over,
+    $button-medium-font-family-pressed
+  );
+  
+  @include x-btn(
+    'default-large',
+    
+    $button-large-border-radius,
+    $button-large-border-width,    
+    
+    $button-default-border-color,
+    $button-default-border-color-over,
+    $button-default-border-color-pressed,
+    
+    $button-large-padding,
+    
+    $button-default-background-color,
+    $button-default-background-color-over,
+    $button-default-background-color-pressed,
+    
+    $button-default-background-gradient,
+    $button-default-background-gradient-over,
+    $button-default-background-gradient-pressed,
+
+    $button-default-color,
+    $button-default-color-over,
+    $button-default-color-pressed,
+        
+    $button-large-font-size,
+    $button-large-font-size-over,
+    $button-large-font-size-pressed,
+    
+    $button-large-font-weight,
+    $button-large-font-weight-over,
+    $button-large-font-weight-pressed,
+    
+    $button-large-font-family,
+    $button-large-font-family-over,
+    $button-large-font-family-pressed
+  );
+  
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default button,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default .#{$prefix}-frame-tl,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default .#{$prefix}-frame-tc,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default .#{$prefix}-frame-tr,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default .#{$prefix}-frame-ml,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default .#{$prefix}-frame-mc,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default .#{$prefix}-frame-mr,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default .#{$prefix}-frame-bl,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default .#{$prefix}-frame-br,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn-default .#{$prefix}-frame-bc {
+    border-radius: 0px;
+    background: none;
+    border-width: 0px;
+  }
+  
+  
+/*  @include x-frame('btn', 'default-small', $button-small-border-radius, $button-small-border-width, $button-small-padding, $default-button-base-color, $default-button-background-gradient);
+  .#{$prefix}-btn-default-small {
+    button {
+      font-size: $button-small-font-size;
+      font-weight: $button-small-font-weight;
+      font-family: $button-small-font-family;
+      color: $button-small-color;
+    }
+  }
+  
+  .#{$prefix}-btn-default-small
+
+  @include x-frame('btn', 'default-medium', $button-medium-border-radius, $button-medium-border-width, $button-medium-padding, $default-button-base-color, $default-button-background-gradient);
+  .#{$prefix}-btn-default-medium {
+    button {
+      font-size: $button-medium-font-size;
+      font-weight: $button-medium-font-weight;
+      font-family: $button-medium-font-family;
+      color: $button-medium-color;
+    }
+  }
+  
+  @include x-frame('btn', 'default-large', $button-large-border-radius, $button-large-border-width, $button-large-padding, $default-button-base-color, $default-button-background-gradient); 
+  .#{$prefix}-btn-default-large {
+    button {
+      font-size: $button-large-font-size;
+      font-weight: $button-large-font-weight;
+      font-family: $button-large-font-family;
+      color: $button-large-color;
+    }
+  }
+  
+  .#{$prefix}-toolbar-default .#{$prefix}-btn,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn button,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn .#{$prefix}-frame-tl,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn .#{$prefix}-frame-tc,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn .#{$prefix}-frame-tr,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn .#{$prefix}-frame-ml,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn .#{$prefix}-frame-mc,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn .#{$prefix}-frame-mr,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn .#{$prefix}-frame-bl,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn .#{$prefix}-frame-br,
+  .#{$prefix}-toolbar-default .#{$prefix}-btn .#{$prefix}-frame-bc {
+    border-radius: 0px;
+    background: none;
+    border-width: 0px;
+  }*/
+    
+  /*
+      &.#{$prefix}-item-disabled {*/
+/*      @include opacity(.6);
+      
+      cursor: default;
+      * { cursor: default; }*/
+/*    }*/
+        
+/*    @include extjs-button-generate('small',
+      $button-small-font-family,
+      $button-small-font-size,
+      $button-small-font-weight,
+      $button-small-color,
+      $button-small-padding,
+      $button-small-border-radius,
+      $button-small-border-radius-vertical,
+      $button-small-border-width,
+      $button-small-inner-border-width,
+      $button-small-border-style,
+      $button-small-icon-size);
+
+    @include extjs-button-generate('medium',
+      $button-medium-font-family,
+      $button-medium-font-size,
+      $button-medium-font-weight,
+      $button-medium-color,
+      $button-medium-padding,
+      $button-medium-border-radius,
+      $button-medium-border-radius-vertical,
+      $button-medium-border-width,
+      $button-medium-inner-border-width,
+      $button-medium-border-style,
+      $button-medium-icon-size);
+
+    @include extjs-button-generate('large',
+      $button-large-font-family,
+      $button-large-font-size,
+      $button-large-font-weight,
+      $button-large-color,
+      $button-large-padding,
+      $button-large-border-radius,
+      $button-large-border-radius-vertical,
+      $button-large-border-width,
+      $button-large-inner-border-width,
+      $button-large-border-style,
+      $button-large-icon-size);
+  }
+  
+  @include extjs-theme-button-generate(
+    $theme-name,
+    
+    $default-button-base-color,
+    $default-button-over-base-color,
+    $default-button-active-base-color,
+    
+    $default-button-background-gradient,
+    $default-button-over-background-gradient,
+    $default-button-active-background-gradient,
+    
+    $default-button-border-color,
+    $default-button-over-border-color,
+    $default-button-active-border-color,
+    
+    $default-button-inner-border-color,
+    $default-button-inner-over-border-color,
+    $default-button-inner-active-border-color
+  );
+  
+  @if $include-no-border-radius {
+    .ext-generator,
+    .ext-no-border-radius {
+      .#{$prefix}-btn {
+        @include border-radius(0);
+        
+        @if $button-border-radius > 0 {
+          border-width: 0;
+          
+          table,
+          tbody {
+            border-width: 0;
+          }
+        }
+
+        table {
+          td {
+            &.#{$prefix}-btn-tl,
+            &.#{$prefix}-btn-tr,
+            &.#{$prefix}-btn-bl,
+            &.#{$prefix}-btn-br {
+              width: $button-border-radius;
+              height: $button-border-radius;
+            }
+
+            &.#{$prefix}-btn-tc,
+            &.#{$prefix}-btn-bc {
+              height: $button-border-radius;
+            }
+
+            &.#{$prefix}-btn-ml,
+            &.#{$prefix}-btn-mr {
+              width: $button-border-radius;
+            }
+
+            @if $button-border-radius == 0 {
+              &.#{$prefix}-btn-tl,
+              &.#{$prefix}-btn-tc,
+              &.#{$prefix}-btn-tr,
+              &.#{$prefix}-btn-bl,
+              &.#{$prefix}-btn-bc,
+              &.#{$prefix}-btn-br,
+              &.#{$prefix}-btn-ml,
+              &.#{$prefix}-btn-mr {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }*/
+/*  }*/
+}
+
+/*
+/**
+ * Mixin used to create the base structure for a specific button scale (small, medium, large)
+ * @param {String} label The name of the button scale (small)
+ * @param {Number} font-size
+ * @param {Number} font-weight
+ * @param {Number} padding
+ * @param {Number} border-radius
+ * @param {Number} border-width
+ * @param {Number} inner-border-width
+ * @param {Number} icon-size
+ *//*
+@mixin extjs-button-generate($label, $font-family, $font-size, $font-weight, $color, $padding, $border-radius, $border-radius-vertical, $border-width, $inner-border-width, $border-style, $icon-size) {
+  .#{$prefix}-btn-#{$label},
+  &.#{$prefix}-btn-#{$label} {
+    border: $border-width $border-style;
+    @include border-radius($border-radius);
+    @include border-radius($border-radius, $border-radius-vertical);
+    
+    // all browsers
+    button {
+      font-family: $font-family;
+      font-size: $font-size;
+      font-weight: $font-weight;
+      color: $color;
+      
+      background-repeat: no-repeat;
+    }
+    
+    // modern browsers
+    > button {
+      border: $inner-border-width $border-style;
+      @include border-radius($border-radius);
+      @include border-radius($border-radius, $border-radius-vertical);
+      
+      // the minimum padding is always the border-radius size
+      @if nth($padding, 1) < $border-radius {
+        $padding: $border-radius;
+      }
+      
+      padding: $padding;
+      
+      height: $icon-size + ($padding * 2);
+    }
+    
+    //icon'd buttons
+    &.#{$prefix}-btn-#{$label} {
+      button {
+        //not sure why we have to take out 1px here.. border?
+        background-position: ($padding - 1px) $padding;
+      }
+      
+      &.#{$prefix}-btn-icon {
+        button {
+          width: $icon-size + ($padding * 2);
+        }
+      }
+    }
+    
+    &.#{$prefix}-btn-text-icon {
+      button {
+        background-position: $padding $padding;
+      }
+      
+      //left
+      &.#{$prefix}-btn-icon-#{$label}-left {
+        button {
+          padding-left: $icon-size + $padding + 5px;
+        }
+      }
+      
+      //right
+      &.#{$prefix}-btn-icon-#{$label}-right {
+        button {
+          padding-right: $icon-size + $padding + 5px;
+          
+          background-position: 91% $padding;
+        }
+      }
+      
+      //top
+      &.#{$prefix}-btn-icon-#{$label}-top {
+        button {
+          padding-top: $icon-size + $padding;
+          
+          background-position: 50% $padding;
+        }
+      }
+      
+      //bottom
+      &.#{$prefix}-btn-icon-#{$label}-bottom {
+        button {
+          padding-bottom: $icon-size + ($padding * 2);
+          
+          background-position: 50% 80%;
+        }
+      }
+      
+      &.#{$prefix}-btn-menu-active {
+        @include border-bottom-radius(0);
+      }
+    }
+    
+    @if $include-no-border-radius {
+      // legacy browsers
+      table {
+        button {
+          @if $padding > $border-radius {
+            // if the border is 0, we need to also remove the border width + inner border width from the padding
+            @if $button-border-radius > 0 {
+              $padding: $padding - $border-radius;
+            }
+            @else {
+              $padding: ($padding - $border-radius) - ($border-width + $inner-border-width);
+            }
+          }
+          @else {
+            $padding: $padding - $border-radius;
+          }
+        
+          padding: $padding;
+          
+          //reset the width of the button
+          width: auto;
+          height: $icon-size;
+        }
+        
+        &.#{$prefix}-btn-icon {
+          button {
+            background-position: 0 0;
+            
+            padding: 0;
+          }
+
+          .#{$prefix}-btn-#{$label} {
+            button {
+              width: $icon-size;
+            }
+          }
+        }
+        
+        &.#{$prefix}-btn-text-icon {
+          button {
+            padding-left: 0;
+            padding-right: 0;
+          }
+          
+          //left
+          .#{$prefix}-btn-icon-#{$label}-left {
+            button {
+              padding-left: $icon-size + 2px;
+
+              @if $label == 'small' {
+                background-position: 1px 1px;
+              } @else {
+                background-position: 0 0;
+              }
+            }
+          }
+
+          //right
+          .#{$prefix}-btn-icon-#{$label}-right {
+            button {
+              padding-right: $icon-size + 2px;
+
+              @if $label == 'small' {
+                background-position: 99% 1px;
+              } @else {
+                background-position: 99% 0;
+              }
+            }
+          }
+          
+          //top
+          .#{$prefix}-btn-icon-#{$label}-top {
+            button {
+              padding-top: $icon-size + ($padding * 2) + $font-size;
+
+              background-position: 50% 0;
+            }
+          }
+
+          //bottom
+          .#{$prefix}-btn-icon-#{$label}-bottom {
+            button {
+              padding-bottom: $icon-size;
+
+              background-position: 50% 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Mixin used to create the theme structure for a specific button ui
+ * @param {String} ui The class of the button ui
+ * @param {Number} background-color
+ * @param {Number} text-color (defaults to: #fff)
+ * @param {Number} text-shadow-color (defaults to: rgba(0,0,0,.4))
+ * @param {Number} text-shadow-direction (defaults to: 0 -1px 0)
+ *//*
+@mixin extjs-theme-button-generate(
+  $ui,
+  
+  //base colors
+  $base-color,
+  $over-base-color: lighten($base-color, 4),
+  $active-base-color: darken($base-color, 2),
+  
+  //background gradients
+  $background-gradient: 'matte',
+  $over-background-gradient: 'matte',
+  $active-background-gradient: 'matte-reverse',
+  
+  //border colors
+  $border-color: darken($base-color, 10),
+  $over-border-color: false,
+  $active-border-color: darken($active-base-color, 8),
+  
+  //inner border colors
+  $inner-border-color: rgba(255, 255, 255, .3),
+  $over-inner-border-color: false,
+  $active-inner-border-color: rgba(255, 255, 255, .3),
+  
+  $active-inner-shadow: true
+  ) {
+  .#{$prefix}-btn.#{$prefix}-#{$ui} {
+    border-color: $border-color;
+    @include background-gradient($base-color, $background-gradient);
+    
+    table,
+    button {
+/*      @if (lightness($base-color) > 40) {
+        color: darken($base-color, 60);
+        text-shadow: 0 1px 0 rgba(255, 255, 255, .4);
+      } @else {
+        color: lighten($base-color, 80);
+        text-shadow: 0 -1px 0 darken($base-color, 10);
+      }*//*
+  
+      border-color: $inner-border-color;
+      border-bottom-color: transparent;
+    }
+
+    &.#{$prefix}-btn-focus,
+    &.#{$prefix}-btn-over {
+      @if $over-border-color {
+        border-color: $over-border-color;
+      }
+      
+      @include background-gradient($over-base-color, $over-background-gradient);
+      
+      @if $over-inner-border-color {
+        table,
+        button {
+          border-color: $over-inner-border-color;
+          border-bottom-color: transparent;
+        }
+      }
+    }
+    
+    &.#{$prefix}-btn-menu-active,
+    &.#{$prefix}-btn-click {
+      border-color: $active-border-color;
+      @include background-gradient($active-base-color, $active-background-gradient);
+      
+      @if $active-inner-shadow {
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+      }
+      
+      @if $active-inner-border-color {
+        table,
+        button {
+          border-color: $active-inner-border-color;
+          border-bottom-color: transparent;
+        }
+      }
+    }
+  
+    &.#{$prefix}-item-disabled {
+      border-color:opacify(mix($base-color, #aaa, 40), .3);
+      @include background-image(linear-gradient(color-stops(opacify(mix(lighten($base-color, 16), #aaa, 40), .3), opacify(mix($base-color, #aaa, 40), .3))), top);
+    
+      cursor: default;
+      
+      table,
+      button {
+        opacity: .5;
+      
+        border-color: opacify(mix(lighten($base-color, 20), #aaa, 40), .3);
+        border-top-color: opacify(mix(lighten($base-color, 23), #aaa, 40), .3);
+        border-bottom-color: opacify(mix(lighten($base-color, 10), #aaa, 40), .3);
+      
+        cursor: default;
+      }
+    }
+  }
+  
+  @if $include-no-gradients {
+    .ext-no-linear-gradient {
+      .#{$prefix}-btn.#{$prefix}-#{$ui} {
+        background: theme-image($theme-name, 'button/#{$ui}-small.gif');
+        background-position: 0 image-background-y($theme-name, '#{$ui}-small-bg.gif');
+      }
+    }
+  }
+  
+  @if $include-no-border-radius {
+    .ext-no-border-radius {
+      .#{$prefix}-btn.#{$prefix}-#{$ui} {
+        //background-image: none;
+      }
+      
+      button {
+        background-color: transparent;
+        background-image: none;
+      }
+      
+      .#{$prefix}-btn {
+        background-color: transparent;
+        background-image: none; 
+      }
+     
+      @if $button-border-radius == 0 {
+        .#{$prefix}-btn-mc { background-position:0 -3px; }
+      }
+    
+      .#{$prefix}-#{$ui} {
+        @include extjs-theme-button-generate-table($ui, 'small');
+        @include extjs-theme-button-generate-table($ui, 'medium');
+        @include extjs-theme-button-generate-table($ui, 'large');
+      }
+    }
+  }
+}
+
+/**
+ * Generates all the background-image CSS for a specified ui of a button for legacy browsers
+ * Includes all button states
+ * @param {String} ui The ui of the button
+ * @param {String} scale The scale of the button (defaults to: 'small')
+ *//*
+@mixin extjs-theme-button-generate-table($ui, $scale: 'small') {
+  //standard button
+  .#{$prefix}-btn-#{$scale} {
+    @include extjs-theme-button-generate-images($ui, $scale);
+    
+    &.#{$prefix}-btn-icon {
+      @include extjs-theme-button-generate-images($ui, $scale, true);
+    }
+    
+    &.#{$prefix}-btn-text-icon {
+      @include extjs-theme-button-generate-images($ui, $scale, true);
+    }
+    
+    &.#{$prefix}-btn-text-icon.#{$prefix}-btn-icon-#{$scale}-top,
+    &.#{$prefix}-btn-text-icon.#{$prefix}-btn-icon-#{$scale}-bottom {
+      @include extjs-theme-button-generate-images($ui, $scale, true, true);
+    }
+  }
+}
+
+/**
+ * Generates the appropriate background-image CSS properties for a button ui
+ * @param {String} ui The ui of the button
+ * @param {String} scale The scale of the button (defaults to: 'small')
+ * @param {Boolean} icon Whether to do an icon button or not (default to: false)
+ *//*
+@mixin extjs-theme-button-generate-images($ui, $scale: 'small', $icon: false, $extra: false) {
+  $image-url    : '';
+  $button-width : 0;
+  $button-height: 0;
+  
+  @if $extra {
+    $image-url: theme-image($theme-name, 'button/#{$ui}-#{$scale}-icon-top.gif');
+  
+    $button-width : image-width($theme-name, '#{$ui}-#{$scale}-icon-top-ml.gif');
+    $button-height: image-height($theme-name, '#{$ui}-#{$scale}-icon-top-ml.gif');
+  }
+  @else if $icon {
+    $image-url: theme-image($theme-name, 'button/#{$ui}-#{$scale}-icon.gif');
+  
+    $button-width : image-width($theme-name, '#{$ui}-#{$scale}-icon-ml.gif');
+    $button-height: image-height($theme-name, '#{$ui}-#{$scale}-icon-ml.gif');
+  } @else {
+    $image-url: theme-image($theme-name, 'button/#{$ui}-#{$scale}.gif');
+  
+    $button-width : image-width($theme-name, '#{$ui}-#{$scale}-ml.gif');
+    $button-height: image-height($theme-name, '#{$ui}-#{$scale}-ml.gif');
+  }
+  
+  $offset: 0;
+  
+  .#{$prefix}-btn-tl, .#{$prefix}-btn-tc, .#{$prefix}-btn-tr, .#{$prefix}-btn-ml, .#{$prefix}-btn-mc, .#{$prefix}-btn-mr, .#{$prefix}-btn-bl, .#{$prefix}-btn-bc, .#{$prefix}-btn-br { background-image: $image-url; }
+  .#{$prefix}-btn-tc, .#{$prefix}-btn-bc, .#{$prefix}-btn-mc { background-repeat: repeat-x; }
+  
+  .#{$prefix}-btn-tl { background-position: 0 background-position($offset, $button-width, 0); }
+  .#{$prefix}-btn-tc { background-position: 0 background-position($offset, $button-width, 1); }
+  .#{$prefix}-btn-tr { background-position: 0 background-position($offset, $button-width, 2); }
+  
+  .#{$prefix}-btn-ml { background-position: 0 background-position($offset, $button-width, 3); }
+  $offset: $offset + $button-height;
+  .#{$prefix}-btn-mc { background-position: 0 background-position($offset, $button-width, 3); }
+  $offset: $offset + $button-height;
+  .#{$prefix}-btn-mr { background-position: 0 background-position($offset, $button-width, 3); }
+  $offset: $offset + $button-height;
+  
+  .#{$prefix}-btn-bl { background-position: 0 background-position($offset, $button-width, 3); }
+  .#{$prefix}-btn-bc { background-position: 0 background-position($offset, $button-width, 4); }
+  .#{$prefix}-btn-br { background-position: 0 background-position($offset, $button-width, 5); }
+  $offset: $offset + $button-height; //this is for the bg
+  
+  .#{$prefix}-btn-over {
+    .#{$prefix}-btn-tl { background-position: 0 background-position($offset, $button-width, 6); }
+    .#{$prefix}-btn-tc { background-position: 0 background-position($offset, $button-width, 7); }
+    .#{$prefix}-btn-tr { background-position: 0 background-position($offset, $button-width, 8); }
+
+    .#{$prefix}-btn-ml { background-position: 0 background-position($offset, $button-width, 9); }
+    $offset: $offset + $button-height;
+    .#{$prefix}-btn-mc { background-position: 0 background-position($offset, $button-width, 9); }
+    $offset: $offset + $button-height;
+    .#{$prefix}-btn-mr { background-position: 0 background-position($offset, $button-width, 9); }
+    $offset: $offset + $button-height;
+
+    .#{$prefix}-btn-bl { background-position: 0 background-position($offset, $button-width, 9); }
+    .#{$prefix}-btn-bc { background-position: 0 background-position($offset, $button-width, 10); }
+    .#{$prefix}-btn-br { background-position: 0 background-position($offset, $button-width, 11); }
+    $offset: $offset + $button-height; //this is for the bg
+  }
+  
+  .#{$prefix}-btn-click {
+    .#{$prefix}-btn-tl { background-position: 0 background-position($offset, $button-width, 12); }
+    .#{$prefix}-btn-tc { background-position: 0 background-position($offset, $button-width, 13); }
+    .#{$prefix}-btn-tr { background-position: 0 background-position($offset, $button-width, 14); }
+
+    .#{$prefix}-btn-ml { background-position: 0 background-position($offset, $button-width, 15); }
+    $offset: $offset + $button-height;
+    .#{$prefix}-btn-mc { background-position: 0 background-position($offset, $button-width, 15); }
+    $offset: $offset + $button-height;
+    .#{$prefix}-btn-mr { background-position: 0 background-position($offset, $button-width, 15); }
+    $offset: $offset + $button-height;
+
+    .#{$prefix}-btn-bl { background-position: 0 background-position($offset, $button-width, 15); }
+    .#{$prefix}-btn-bc { background-position: 0 background-position($offset, $button-width, 16); }
+    .#{$prefix}-btn-br { background-position: 0 background-position($offset, $button-width, 17); }
+    $offset: $offset + $button-height; //this is for the bg
+  }
+  
+  .#{$prefix}-btn-disabled {
+    .#{$prefix}-btn-tl { background-position: 0 background-position($offset, $button-width, 19); }
+    .#{$prefix}-btn-tc { background-position: 0 background-position($offset, $button-width, 20); }
+    .#{$prefix}-btn-tr { background-position: 0 background-position($offset, $button-width, 21); }
+
+    .#{$prefix}-btn-ml { background-position: 0 background-position($offset, $button-width, 22); }
+    $offset: $offset + $button-height;
+    .#{$prefix}-btn-mc { background-position: 0 background-position($offset, $button-width, 22); }
+    $offset: $offset + $button-height;
+    .#{$prefix}-btn-mr { background-position: 0 background-position($offset, $button-width, 22); }
+    $offset: $offset + $button-height;
+
+    .#{$prefix}-btn-bl { background-position: 0 background-position($offset, $button-width, 23); }
+    .#{$prefix}-btn-bc { background-position: 0 background-position($offset, $button-width, 24); }
+    .#{$prefix}-btn-br { background-position: 0 background-position($offset, $button-width, 25); }
+    $offset: $offset + $button-height; //this is for the bg
+  }
+}*/

@@ -1,0 +1,93 @@
+/**
+ * @class Ext.TabBar
+ * 
+ */
+@mixin extjs-tabbar {
+  .x-tab-bar {
+    border-width: 1px;
+    border-style: solid;
+    padding-bottom: 2px;
+    border-color: $panel-header-border-color;
+    @include background-gradient($tabbar-base-color, 'matte');
+    position: relative;
+  }
+  
+  .x-tab-bar-strip {
+    height: 3px;
+    border-top: 1px solid;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    z-index: 2;
+    border-color: $panel-header-border-color;
+    background-color: $tabbar-base-color;
+  }
+  
+  .x-tab-bar-body {
+    z-index: 1;
+  }
+  
+/*  .#{$prefix}-tab-bar {
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    border-color: $panel-header-border-color;
+    @include border-top-left-radius(nth($tab-border-radius, 1));
+    @include border-top-right-radius(nth($tab-border-radius, 2));
+    @include border-bottom-left-radius(nth($tab-border-radius, 3));
+    @include border-bottom-right-radius(nth($tab-border-radius, 4));
+    
+    @include background-gradient($tabbar-base-color);
+    
+    .#{$prefix}-box-inner {
+      margin-bottom: 2px;
+    }
+  }
+  
+  .#{$prefix}-tab-bar-body {
+    @include border-top-left-radius(nth($tab-border-radius, 1));
+    @include border-top-right-radius(nth($tab-border-radius, 2));
+    @include border-bottom-left-radius(nth($tab-border-radius, 3));
+    @include border-bottom-right-radius(nth($tab-border-radius, 4));
+    
+    margin: 2px 2px 1px 2px;
+  }
+  
+  .#{$prefix}-tab-bar-plain {
+    border-width: 0;
+    @include border-radius(0);
+    
+    background: transparent;
+    
+    .#{$prefix}-tab-bar-body {
+      margin: 2px $tabbar-plain-size 1px $tabbar-plain-size;
+      
+      border-color: $panel-header-border-color;
+      
+      background-color: $tabbar-base-color;
+    }
+  }
+  
+  .#{$prefix}-tab-bar-plain-body {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    height: $tabbar-plain-size;
+    
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+  }
+  
+  .#{$prefix}-docked-top {
+    .#{$prefix}-tab-bar-plain-body {
+      @include border-top-radius($tabbar-plain-size);
+    }
+  }
+  
+  .#{$prefix}-docked-bottom {
+    .#{$prefix}-tab-bar-plain-body {
+      @include border-bottom-radius($tabbar-plain-size);
+    }
+  }*/
+}

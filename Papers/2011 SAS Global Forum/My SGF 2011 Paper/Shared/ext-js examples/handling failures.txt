@@ -1,0 +1,108 @@
+Phil/Rafal
+
+All the online samples and book samples I've seen seem to assume that when
+you call a url to load a store everything always works - of course real
+life isn't like that so over the weekend I was thinking "how do we handle a
+situation when the server-side program fails for some reason?"
+
+Not having SAS at home I used PHP and MySQL to simulate a Stored Process
+call - although the mechanics are a bit different the principles should
+hold true for SAS also.
+
+Here's the simple piece of PHP I used
+
+<?php
+
+$link = mysql_connect('localhost', 'root', '');
+if (!$link) {
+   die('Could not connect: ' . mysql_error());
+}
+$db_selected = mysql_select_db('sakila', $link);
+if (!$db_selected) {
+   die ('Can\'t use sakila : ' . mysql_error());
+}
+$sql = "SELECT * FROM movies";
+$arr = array();
+
+if (!$rs = mysql_query($sql)){
+Echo '{success:false,error: "Database Query Failed"}';
+}else{
+while($obj = mysql_fetch_object($rs)){
+$arr[] = $obj;
+}
+Echo '{success:true,rows: '.json_encode($arr).'}';
+}
+?>
+
+The code first links to MySQL and makes a connection with a database called
+sakila (it's a test db you can get for MySQL containing fictitious movie
+data - within that DB I created a table called movies which has a subset of
+columns from it's 'films' table). It then attempts a simple select from the
+movies table. If all goes well it then loads the selected rows into an
+array and PHP has a rather helpful function called encode which converts an
+array into JSON. However if the select returns an error (as it does when I
+change the select to be from a deliberately misspelled table name like
+'moies' it returns the line highlighted in blue ie a JSON string with
+success:false and an error message.
+
+Here's the Ext
+
+<html>
+<head>
+<title>Template</title>
+<link rel="stylesheet" type="text/css"
+href="extjs/resources/css/ext-all.css" />
+<script src="extjs/adapter/ext/ext-base.js"></script>
+<script src="extjs/ext-all.js"></script>
+<script>
+Ext.onReady(function(){
+var store = new Ext.data.Store({
+url:'get_movies.php',
+
+reader: new Ext.data.JsonReader({
+root:'rows',
+id:' film_id'
+},[
+'film_id',
+'title'
+])
+});
+store.on('loadexception', function(event,options,response,error) {
+var json = Ext.decode(response.responseText);
+Ext.Msg.alert('Error', json.error);
+       });
+store.load();
+var grid = new Ext.grid.GridPanel({
+renderTo: document.body,
+frame: true,
+title: 'Movies',
+height: 200,
+width: 500,
+store: store,
+columns: [
+{header: "Film id", dataindex: 'film_id'},
+{header: "Title", dataindex: 'title'}
+]
+});
+});
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
+
+The important thing here is the code highlighted in pink. When the store
+attempts to load the returned data it automatically exams the value of
+success and if it is set to false it triggers the 'loadexception' event and
+the function code runs; the ext.decode method parses the returned JSON and
+the error message is displayed in an alert - we could also write to a log
+or carry out some alternate action if we wanted to.
+
+Whether this handles the case of a catastophic SAS failure I couldn't say
+as of course I couldn't replicate it, but at least we should be able to
+handle most errors using this technique as long as we are sure to check the
+validity of statements before executing them in SAS.
+
+Chris

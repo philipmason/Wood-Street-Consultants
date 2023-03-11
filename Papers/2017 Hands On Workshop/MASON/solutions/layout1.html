@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <script type="text/ecmascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script> 
+<style> 
+#header {
+    background-color:black;
+	font: bold 12px/30px Georgia, serif;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#aside {
+    width: 45%;
+    height: 600px;
+    background-color:#eee;
+    float:right;
+    padding:15px;
+}
+#section1 {
+    line-height:30px;
+    background-color:#fff;
+    height:400px;
+    width:50%;
+    float:left;
+    padding:5px;
+}
+#section2 {
+	font: bold 12px/30px Georgia, serif;
+    line-height:30px;
+    background-color:#fff;
+    height:200px;
+    width:50%;
+    float:left;
+    padding:5px;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+
+img {
+	float: left ;
+	height: 40px;
+}
+</style>
+<script>
+$(document).ready(function(){
+    $("#section1").load("http://d351tq92/SASStoredProcess/do?_program=%2FUser+Folders%2Fphil%2FMy+Folder%2FExercise+1") ;
+    $("#section2").load("http://d351tq92/SASStoredProcess/do?_program=%2FUser+Folders%2Fphil%2FMy+Folder%2FExercise+2") ;
+    $("#aside").load("http://d351tq92/SASStoredProcess/do?_program=%2FUser+Folders%2Fphil%2FMy+Folder%2FExercise+3") ;
+	$('#link1').click(function(){
+	   window.open('http://nzyouthcourt.meteor.com/','_blank') ;
+	})
+	$('#link2').click(function(){
+	   window.open('http://mbostock.github.io/d3/talk/20111018/treemap.html','_blank') ;
+	})
+	$('#link3').click(function(){
+	   window.open('http://bost.ocks.org/mike/nations/','_blank');
+	})
+	$('#link4').click(function(){
+	   window.open('http://square.github.io/crossfilter/','_blank');
+	})
+
+	
+	var d = new Date();
+	var month = d.getMonth()+1;
+	var day = d.getDate();
+	var output = d.getFullYear() + '/' +
+		((''+month).length<2 ? '0' : '') + month + '/' +
+		((''+day).length<2 ? '0' : '') + day;
+	$('#now').text('Version: 0.1 --- Date: ' + output) ;
+});
+</script>
+</head>
+<body>
+<header>
+	<div id="header">
+	<h2>Loading Header</h2>
+	</div>
+</header>
+ 
+<div id="aside">
+<aside>
+	<h2>Loading Aside</h2>
+</aside>
+</div>
+ 
+<div id="section1">
+<section>
+	<h2>Loading Section1</h2>
+</section>
+</div>
+ 
+<div id="section2">
+<section>
+	<h2>Loading Section2</h2>
+</section>
+</div>
+  
+<div id="footer">
+<footer>
+	<b>Good Examples:&nbsp;&nbsp;&nbsp;</b>
+	<button id="link1">CrossFilter (Court)</button>&nbsp;&nbsp;&nbsp;
+	<button id="link2">TreeMap</button>&nbsp;&nbsp;&nbsp;
+	<button id="link3">Motion Chart</button>&nbsp;&nbsp;&nbsp;
+	<button id="link4">CrossFilter (Airline)</button>
+	<div id="now"></div>
+</footer>
+</div>
+</body>
+</html>

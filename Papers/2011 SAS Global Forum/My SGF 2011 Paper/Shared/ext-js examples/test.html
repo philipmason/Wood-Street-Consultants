@@ -1,0 +1,25 @@
+<html>
+<head>
+<script type='text/javascript'>
+var popwin = null ;
+
+function open_popup()
+{
+  if (popwin == null)
+    popwin = window.open('http://xs103:8080/SASStoredProcess1/do?_program=SBIP://Foundation/cmis/info(StoredProcess)','','top=150,left=350,width=250,height=50,status=0,toolbar=0,location=0,menubar=0,directories=0,resizable=0,scrollbars=0') ;
+}
+
+function close_popup()
+{
+  if (popwin != null)
+    {popwin.close() ; popwin = null;}
+}
+</script>
+</head>
+<body onload='alert("finished loading");' onunload='alert("finished unloading");'
+      onkeypress='window.status="key pressed is: " + String.fromCharCode(window.event.keyCode) ;' onkeyup='window.status="key up";'>
+Pop-up a window with information by moving over <a href='#' onmouseover='open_popup();' onmouseout='close_popup();'>here</a>.
+<p>
+Pop-up a window with information by clicking <a href='#' onmousedown='open_popup();' onmouseup='close_popup();'>here</a>.
+</body>
+</html>

@@ -1,0 +1,16 @@
+data _null_ ;
+	set sashelp.orsales end=_end ;
+	if _n_=1 then put '[' ;
+	put '{' ;
+	put '"product_category":"'   product_category   +(-1) '",' ;
+	put '"product_group":"'    product_group    +(-1) '",' ;
+	put '"product_line":"'    product_line    +(-1) '",' ;
+	put '"profit":"' profit +(-1) '",' ;
+	put '"quantity":"' quantity +(-1) '"' ;
+	put '"quarter":"' quarter +(-1) '"' ;
+	put '"total_retail_price":"' total_retail_price +(-1) '"' ;
+	put '"year":"' year +(-1) '"' ;
+	put '}' ;
+	if not _end then put ',' ;
+	else put ']' ;
+run ;

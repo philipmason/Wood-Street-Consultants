@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>Chart Example</title>
+	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />
+	<script type="text/javascript" src="extjs/adapter/ext/ext-base.js"></script>
+	<script src="extjs/ext-all-debug.js"></script>
+	
+	<script type="text/javascript">
+
+        Ext.BLANK_IMAGE_URL = "extjs/images/default/s.gif";
+        Ext.chart.Chart.CHART_URL = "extjs/resources/charts.swf";
+	
+	Ext.onReady(function(){
+		
+		
+		var figstore = new Ext.data.JsonStore({
+			url: 'figures.json',
+			root: 'rows',
+		//	fields: ['id', 'month', 'sales', 'wages', 'red', 'amber', 'green'],
+		
+			autoLoad: true
+		});
+		
+				
+		var pnl = new Ext.Panel({
+			title: "Monthly Figures",
+			renderTo: Ext.getBody(),
+			width: 500,
+			height: 300,
+			layout: 'fit',
+			items: { 
+				xtype: 'linechart',
+				store: figstore,
+				xField: 'month',
+				padding:0,
+				
+				yAxis: new Ext.chart.NumericAxis({
+					title: "Figures",
+					majorUnit: 500,
+					labelRenderer: Ext.util.Format.numberRenderer("0,0")
+				}),
+				xAxis: new Ext.chart.CategoryAxis({
+					title:'Month'
+				}),
+				
+				series: [
+					{
+					// type: 'column',
+					displayName: "sales",
+					yField: 'sales',
+					style: {color: '#000000'}
+					},
+					{
+					
+					displayName: "wages",
+					yField: 'wages',
+					style: {color: '#FF00FF',size:5}
+					}
+				],
+				extraStyle:{
+					legend: {
+						display: 'bottom'
+					}
+				}
+			}
+		});
+	});
+	</script>
+</head>
+
+<body>
+
+</body>
+</html>

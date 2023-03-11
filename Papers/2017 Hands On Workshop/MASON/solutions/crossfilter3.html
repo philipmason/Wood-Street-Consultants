@@ -1,0 +1,68 @@
+<!DOCTYPE html>                                                                 
+<html lang="en">                                                                
+<head>                                                                          
+    <title>dc.js - Number Display Example</title>                               
+    <meta charset="UTF-8">                                                      
+    <link rel="stylesheet" type="text/css" href="http://dc-js.github.io/dc.js/css/dc.css"/>                                                                     
+</head>                                                                                                                                                         
+<body>                                                                                                                                                          
+<h1>Stored Process with simple crossfilter</h1>                                                                                                                 
+<div id="chart-ring-Year"></div>                                                                                                                                
+<div id="chart-hist-spend"></div>                                                                                                                               
+<div id="chart-row-spenders"></div>                                                                                                                             
+                                                                                                                                                                
+<script type="text/javascript" src="http://dc-js.github.io/dc.js/js/d3.js"></script>                                                                            
+<script type="text/javascript" src="http://dc-js.github.io/dc.js/js/crossfilter.js"></script>                                                                   
+<script type="text/javascript" src="http://dc-js.github.io/dc.js/js/dc.js"></script>                                                                            
+<script type="text/javascript">                                                                                                                                 
+                                                                                                                                                                
+var YearRingChart   = dc.pieChart("#chart-ring-Year"),                                                                                                          
+    spendHistChart  = dc.barChart("#chart-hist-spend"),                                                                                                         
+    spenderRowChart = dc.rowChart("#chart-row-spenders");                                                                                                       
+                                                                                                                                                                
+// d3.csv("http://khv-sas-iis2.cfsi.local/SASStoredProcess/do?_program=/Shared+Data/SASTesting/csv", function(error, spendData) {/* do stuff */});              
+d3.csv("http://d351tq92/SASStoredProcess/do?_program=%2FUser+Folders%2Fphil%2FMy+Folder%2Fcsv2&table=sashelp.orsales", function(spendData) {
+                                                                                                                                                                
+// normalize/parse data                                                                                                                                         
+spendData.forEach(function(d) {                                                                                                                                 
+    d.Quantity = d.Quantity.match(/\d+/);                                                                                                                             
+});                                                                                                                                                             
+                                                                                                                                                                
+// set crossfilter                                                                                                                                              
+var ndx = crossfilter(spendData),                                                                                                                               
+    YearDim  = ndx.dimension(function(d) {return +d.Year;}),                                                                                                    
+    spendDim = ndx.dimension(function(d) {return Math.floor(d.Quantity/1000);}),                                                                                     
+    Product_CategoryDim  = ndx.dimension(function(d) {return d.Product_Category;}),                                                                                                     
+    spendPerYear = YearDim.group().reduceSum(function(d) {return +d.Quantity;}),                                                                                   
+    spendPerProduct_Category = Product_CategoryDim.group().reduceSum(function(d) {return +d.Quantity;}),                                                                                   
+    spendHist    = spendDim.group().reduceCount();                                                                                                              
+                                                                                                                                                                
+YearRingChart                                                                                                                                                   
+    .width(300).height(300)                                                                                                                                     
+    .dimension(YearDim)                                                                                                                                         
+    .group(spendPerYear)                                                                                                                                        
+    .innerRadius(50);                                                                                                                                           
+                                                                                                                                                                
+spendHistChart                                                                                                                                                  
+    .width(400).height(300)                                                                                                                                     
+    .dimension(spendDim)                                                                                                                                        
+    .group(spendHist)                                                                                                                                           
+    .x(d3.scale.linear().domain([0,10]))                                                                                                                        
+    .elasticY(true);                                                                                                                                            
+                                                                                                                                                                
+spendHistChart.xAxis().tickFormat(function(d) {return d*1000}); // convert back to base unit                                                                      
+spendHistChart.yAxis().ticks(2);                                                                                                                                
+                                                                                                                                                                
+spenderRowChart                                                                                                                                                 
+    .width(700).height(300)                                                                                                                                     
+    .dimension(Product_CategoryDim)                                                                                                                                         
+    .group(spendPerProduct_Category)                                                                                                                                        
+    .elasticX(true);                                                                                                                                            
+                                                                                                                                                                
+dc.renderAll();                                                                                                                                                 
+});                                                                                                                                                             
+                                                                                                                                                                
+</script>                                                                                                                                                       
+                                                                                                                                                                
+</body>                                                                                                                                                         
+</html>                                                                                                                                                         

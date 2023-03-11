@@ -1,0 +1,122 @@
+Phil
+
+Here's an example of creating  comboboxes I did when working on the chart -
+it's used in creating the comboboxes which hold the start and end dates. It
+
+
+First we create the JsonStore - the values in baseParams are passed to the
+stored process as parameters so they are automatically global macro
+variables. I've defined to select the full span defaults but you can
+override these at run time. I've got the code for that if you want but it
+may be a little complicated for your purposes.
+
+var spanstore = new Ext.data.JsonStore({
+                 baseParams: {
+                       ts_start_date:0000,
+                       ts_end_date:9999
+                 },
+                 url:
+'http://tcensas1:8080/SASStoredProcess12a/do?_program=//Foundation/cmis/cmis2011/stream_tsdates_to_json',
+                 root: 'rows',
+                 fields: ['id', 'tsdate'],
+
+                 autoLoad: true
+           });
+
+Then we define the comboboxes as being inside an fbar ie a footer bar in a
+panel. We also have a submit button with a little simple validation. If the
+values successfully pass the validation then another store (figstore) is
+loaded using the values selected in the combobox.
+
+fbar:[{
+     xtype: 'combo',
+     id: 'startdate',
+     store: spanstore,
+
+     displayField: 'tsdate',
+     fieldLabel: 'Start date to display',
+     mode: 'local',
+     emptyText: 'Select start date to display',
+     valueField: 'tsdate'
+
+     },
+     {
+     xtype: 'combo',
+     id: 'enddate',
+     store: spanstore,
+
+     displayField: 'tsdate',
+     fieldLabel: 'End date to display',
+     mode: 'local',
+     emptyText: 'Select end date to display',
+     valueField: 'tsdate'
+     },
+     {
+     text: 'Submit',
+     handler: function(){
+           nstart=Ext.getCmp('startdate').getValue();
+           nend=Ext.getCmp('enddate').getValue();
+           v=nstart.length;
+           if(v == 0){alert('You must select a Start Date');return};
+           v=nend.length;
+           if(v == 0){alert('You must select an End Date');return};
+           if(nend < nstart){alert('End Date cannot be earlier than Start
+Date');return};
+           figstore.load({params:{ts_start_date:nstart,ts_end_date:nend}})
+           }
+     }
+
+     ]
+
+This is how the Stored Process streams the dates back (after applying the
+start and end date parameters passed from baseParams
+
+data _null_;
+     file _webout;
+     dsid=open("dset");
+     nvars=attrn(dsid,'nvars');
+     last=attrn(dsid,'nobs');
+
+     put
+           '{' /
+
+                 "     'root': 'rows'," /
+                 "     'fields':['id','tsdate']," /
+
+           "'rows':[" /;
+
+     do i=1 to last;
+           rc=fetch(dsid);
+           tsdate=getvarn(dsid,varnum(dsid,"&time_var"));
+
+           put "{";
+           put "'id':" i ",";
+           put "'tsdate':" tsdate ;
+
+           put "}";
+           if i ne last then put ",";
+
+     end;
+     put "]}";
+run;
+
+This streams back Json looking something like
+
+ "fields" : [ "id",
+     "tsdate"
+   ],
+ "root" : "rows",
+ "rows" : [ { "id" : 1,
+       "tsdate" : 1999
+     },
+     { "id" : 2,
+       "tsdate" : 2000
+     },
+     { "id" : 3,
+       "tsdate" : 2001
+     },
+     { "id" : 4,
+       "tsdate" : 2002
+     }
+   ]
+}

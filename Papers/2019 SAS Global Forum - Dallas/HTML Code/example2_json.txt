@@ -1,0 +1,9 @@
+{
+    "data": [
+        ["Phil","Mason","Father"],
+        ["Esther","Mason","Mother"],
+        ["Jacob","Mason","Son"],
+        ["Annie","Mason","Daughter"],
+        ["Reuben","Mason","Son"]
+    ]
+}

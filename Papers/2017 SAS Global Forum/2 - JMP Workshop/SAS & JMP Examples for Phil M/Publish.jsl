@@ -1,0 +1,198 @@
+//publish.jsl
+//Written by Jon Weisz jon.weisz@jmp.com
+//Program allows the user to select a file from the local machine and publish to a SAS
+//channel defined in a metadata server.
+
+Clear Globals();
+
+//Get preferences for metadata server and userid used in package publish SAS code
+Clear Log();
+Show Preferences( SAS Integration Settings );
+Save Log( "$TEMP/log.txt" );
+logText = Load Text File( "$TEMP/log.txt" );
+Server = eval(substr(logText,munger(logText,1,"Default Server") + 17,
+
+   munger(logText,munger(logText,1,"Default Server(") ,"),") 
+   - 
+   (munger(logText,1,"Default Server(") + 19)
+   	
+   ));
+person = eval(substr(logText,munger(logText,1,"Default User Name(") + 20,
+
+   munger(logText,munger(logText,1,"Default User Name(") ,"),") 
+   - 
+   (munger(logText,1,"Default User Name(") + 22)
+   	
+   ));
+
+//find out if session in connected to a metadata server, if not connect 
+if (not(Meta Is Connected()),
+meta Connect(),
+    );
+//find out if session is connected to a workspace server, if not connect 
+if (not(SAS Is Connected()),
+sasConnect("SASMain")
+   );
+
+//submit data step code that finds all channels defined in the metadata server 
+SAS Submit(
+	"
+    data _null_;
+      length uri name $256;
+      uri = '';
+      name = '';
+      rc=1;
+      n=1;
+      file print;put 'channelList = {\!"' @;
+      do while(rc>0);
+        rc=metadata_getnobj('omsobj:ITChannel?@Id contains ''.'' ',n,uri);
+          if (rc>0) then do;
+          nrc=metadata_getattr(uri,'Name',name);
+          if name ne ' ' then put name '\!",\!"' @;
+        end;
+        n=n+1;
+        end;
+        put '\!"};';
+    run;
+    
+  ",
+	NoOutputWindow
+);
+
+//parse the sas output object and create jsl list ChannelList containing all defined channels 
+rc = Substr( SAS Get Output(), Munger( SAS Get Output(), 1, "channelList = {" ) );
+Eval( Parse( rc ) );
+
+//Create UI for publish add-in 
+PublishDialog = New Window( "Publish Content to SAS Channel",      
+	
+	Border Box(
+		Left( 3 ),
+		top( 2 ),
+		V List Box(
+			V List Box(
+				Panel Box( "1. Choose the file to publish", Button Box( "Browse", 
+				filepath = Pick File("Choose file to publish","",{"JMP Files(*.JSL,*.JMP,*.JRN,*.JMPPRJ,*.JRP)|jsl;jmp;jrn;jmpprj;jrp","SAS Files(*.SAS,*.SAS7BDAT,*.XPT)|sas;sas7bdat;xpt","All Files|*"}) ) ),  //close Browse hlist box 
+			
+				Panel Box( "2. Choose the SAS Channel", cb1 = Combo Box( ChannelList ) ),  //close channel select hlist box 
+			
+				Panel Box( "3. Name the SAS Package", teb1 = Text Edit Box( "         " ) ),  //close package name hlist box 
+				Panel Box( "4. Publish the SAS Package to the server",
+					Button Box( "Publish",
+						If( filepath == Empty(),
+							New Window( "Publish Error",
+								Text Box( "Please Choose a file to publish by selecting the browse button" )
+							),
+							PublishPackage
+						)
+					)
+				),
+				Button Box( "Cancel", PublishDialog << Closewindow(), Clear Globals() )
+			)
+		)//close vlist box 
+	)//close border box 
+	
+);
+
+//Create expression to contain code that is evaluated when the publish button is selected 
+PublishPackage = expr(
+
+//get data from dialog 
+packagename = teb1 << getText(); 
+CombListElement = cb1 << Get(); 
+channel = ChannelList[CombListElement];
+PublishDialog << Closewindow();
+
+//submit sas data step code that finds the work directory of the current workspace session 
+SAS Submit(
+	"
+	
+	data _null_;
+	 file print;
+	 work = pathname('work');
+	 put 'work = {\!"'  work '\!"};';
+	run;
+	
+	",
+	noOutPutWindow
+);
+//parse the sas output object to return a jsl variable that contains the work path 
+path = Substr( SAS Get Output(), Munger( SAS Get Output(), 1, "work = {" ) );
+Eval( Parse( path ) );
+
+//now find the last word in a file path for Windows, Linux or Mac 
+file = Words( filepath, "/\" );
+filename = file[Length( file )];
+
+//create a full path for the to-be published file on the server 
+dest = Concat( Substr( Char( work ), 3, Length( Char( work ) ) - 5 ), "\", Char( filename ) );
+
+//move the file from the local machine to the work directory on the server 
+SAS Send File( filepath, dest );
+
+//submit the data step code to publish the file to the chosen channel 
+SAS Submit(
+	Eval Insert(
+		"
+%macro checkrc(text);
+   if rc ne 0 then do;
+      msg=sysmsg();
+      put msg=;
+      end;
+   else put \!"&text succeeded\!";
+%mend checkrc;
+
+%macro Pubpkg;
+
+data _null_;
+   length rc pid 8; 
+   length type $ 10 mimetype $ 20;
+   pid = 0;
+   rc = 0;
+   /*set proper mime type based upon file extension*/
+   if index('^dest^','.jsl') then do;
+     type = 'text';
+     mimetype = 'text/x-jmp-script';
+   end;
+   else if index('^dest^','.jmpprj') then do;
+     mimetype = 'application/x-jmp-project';
+   end;
+   else if index('^dest^','.jrn') then do;
+     mimetype = 'application/x-jmp-journal';
+   end;
+   else if index('^dest^','.jrp') then do;
+     mimetype = 'application/x-jmp-report';
+   end;
+   else do;
+     type = 'binary';
+     mimetype = 'application/x-jmp-data';
+   end;
+
+   call package_begin(pid, '^packagename^', '', rc, 'ABSTRACT', '^person^');
+   %checkrc(Package init);
+
+   call insert_file(pid, 'filename:^dest^', 
+     type, mimetype, 'JMP Content', '', rc);
+   %checkrc(insert jsl file);
+
+  call package_publish(pid, 'TO_SUBSCRIBERS', rc, 
+     'ARCHIVE_PATH, CHANNEL_STORE', 
+     '', 'SAS-OMA://^server^:8561/reposname=Foundation', 
+     '^channel^');
+     
+   %checkrc(Publish to archive);
+   if rc = 1 then call symput('pub','Success');
+   Call package_end(pid, rc);
+   %checkrc(Package term);
+   
+run;
+
+%mend Pubpkg;
+
+%Pubpkg
+
+"
+	),
+	nooutputwindow
+);
+);//End publish package 

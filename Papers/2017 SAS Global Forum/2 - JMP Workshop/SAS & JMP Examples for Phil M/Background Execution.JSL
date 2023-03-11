@@ -1,0 +1,71 @@
+﻿ClearGlobals();
+
+// Break any existing connection
+if (metaIsConnected(), MetaDisconnect());
+
+// Make a specific new connection: Note we do not use the chance to specify a repository
+// Coonection info:
+// 							Machine				Port
+//                          -------             ----
+// Jon's machine:		d12865.na.sas.com		8561
+// JMP Dev:				jmpdev.na.sas.com		8561
+// Unix:				ctnh6i01.unx.sas.com	48561
+// z/OS:				s390deva.mvs.sas.com	18561	
+//
+// (More at: http://sww.sas.com/jmpwiki/Wiki.jsp?page=HowToConnectToSASServersOnJmpdev)
+ok = MetaConnect("d12865.na.sas.com", 8561, "DefaultAuth", "sasdemo", "******", Prompt(IfNeeded));
+if (!ok, Beep(); Dialog("MetaConnect Failed"); Throw());
+
+// Get a list of the repositories assoicated with the current metadata server
+repositories = MetaGetRepositories();
+Show(repositories);
+// If there is more than one repository . . .
+If (NItems(repositories())>1, 
+	// . . . let the user pick the one to use
+	dlg = Dialog(
+					TextBox("Select a Repository"),
+					TextBox(" "),
+					rep = ListBox(Eval(repositories)),
+					HList(Button("OK"), Button("Cancel"))
+				);
+	rep = dlg["rep"];
+	// But make sure we can connect to it succesfully
+	if (!metaSetRepository(rep[1]), Beep(); Dialog("MetaSetRepoository Failed"); Throw());
+ );
+
+// Now get a list of SAS Servers registered in the current repository
+servers = MetaGetServers();
+Show(servers);
+
+// Pick a particular stored process  (returns 0 if the specified stored process does not exist)
+stpName = "JMP BI Demos/Forbes 2000 Analysis";						// This one has one paramater
+stp = MetaGetStoredProcess(stpName);
+
+// Find out about the stored process . . .
+stpName2 = stp << GetName();
+stpID = stp << GetMetadataID();
+stpPath = stp << GetMetadataPath();
+
+// Find out what parameters there are (returns {} if there are none) . . .
+stpAllParams = stp << GetParamNames();
+
+// Find out what values this parameter can take . . .
+paraEnumValues = stp << GetParamEnumValues(stpAllParams[1]);
+paraEnumLabels = stp << GetParamEnumLabels(stpAllParams[1]);
+// Get the current value of this parameter
+paramValueCurrent = stp << GetParamValue(stpAllParams[1]);
+Show(stpAllParams[1], paramValueCurrent);
+// Set the current value of this parameter to the first one possible
+stp << SetParamValue(stpAllParams[1], paraEnumLabels[1]);
+paramValueCurrent = stp << GetParamValue(stpAllParams[1]);
+Show(stpAllParams[1], paramValueCurrent);
+
+// Run the stored process in the background: Note that between BeginRun and
+// EndRun we can use JMP for something useful while the SAS Server is busy
+NewWindow("BeginRun", TextBox("Do something else in JMP while the SAS Server is busy"));
+stp << BeginRun;
+waitFor = 1000*60*10;												// A maximum of ten minutes
+// Route alerts to JMP log rather than JMP UI
+stp << EndRun(MaxWait(waitFor), NoAlerts(1));
+
+MetaDisconnect();

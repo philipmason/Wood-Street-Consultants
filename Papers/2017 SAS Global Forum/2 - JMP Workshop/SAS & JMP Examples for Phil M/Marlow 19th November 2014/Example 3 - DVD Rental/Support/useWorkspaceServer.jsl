@@ -1,0 +1,64 @@
+﻿// ian.cox@jmp.com: 23Jun2008
+// Connecting to a meta-data defined SAS workspace server via JSL
+NamesDefaultToHere(1);
+ClearGlobals();
+
+// Break any existing connection
+if (metaIsConnected(), MetaDisconnect());
+
+// Establish connection to SAS 9.3 JMPDev metadata server
+ok = MetaConnect("jmpdev.na.sas.com", 38561, "DefaultAuth", "sasdemo", "SASpw1", Prompt(IfNeeded));
+if (!ok, Beep(); Dialog("MetaConnect Failed"); Throw());
+
+// Get a list of the repositories assoicated with the current metadata server. (None in this case)
+repositories = MetaGetRepositories();
+Show(repositories);
+
+// Get a list of the environments assoicated with the current metadata server. (None in this case)
+environments = MetaGetEnvironments();
+Show(environments);
+
+// Now get a list of SAS Servers registered in the current repository. (Only one, 'SASApp' in this case)
+servers = MetaGetServers();
+Show(servers);
+// If there is more than one server . . .
+If (NItems(servers)>1, 
+	// . . . let the user pick the one to use
+	dlg = Dialog(
+					TextBox("Select a Server"),
+					TextBox(" "),
+					rep = ListBox(Eval(servers)),
+					HList(Button("OK"), Button("Cancel"))
+				);
+	rep = dlg["rep"];
+	chosenServer = rep[1],
+	// Else get to the only one
+	chosenServer = servers[1],
+ );
+// Make the connection . . .
+sasCon = SAS Connect(chosenServer);
+if (!IsScriptable(sasCon), Beep(); Dialog("SAS Coonection to "||chosenServer||" Failed"); Throw());
+// What SAS libraries are available?
+sasLibraries = sasCon << SAS Get Librefs();
+Print(sasLibraries);
+/* 
+// Make a required SAS library if it doesn't exist already . . .
+// (But 'sasdemo' can't make a new directory on JMPDev)
+if (!Contains(sasLibraries, "IanCox"),
+	// Make a directory
+	rc1 = sasCon << SAS Submit("data null; newDir = dCreate(\!"IanCox\!", \!"C:\\!"); run;");
+	// Assign teh library
+	rc2 = sasCon << SAS Assign Lib Refs("IanCox", "C:\IanCox");
+	);
+Print(sasLibraries);
+*/
+if (!Contains(sasLibraries, "Flkbstr"), Beep(); Dialog("Library needed for 'FlickBuster' demo is not present."); Throw());
+// Get a list of the datasets in the library
+dataSets = sasCon << SAS Get Datasets("Flkbstr");
+// Get a list of the variables in each dataset
+For(d=1, d<=NItems(dataSets), d++,
+	Print(datasets[d], sasCon << SAS Get VarNames("Flkbstr", datasets[d]));
+	);
+
+sasCon << SAS Disconnect();
+MetaDisconnect();

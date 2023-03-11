@@ -1,0 +1,40 @@
+New Table( "God's Dose Delivered Model",
+	Add Rows( 4 ),
+	New Property( "Fit Model",
+		Fit Model(
+			Y( :Dose Delivered ),
+			Effects( :Flow Rate, :Orifice Size, :Flow Rate * :Orifice Size ),
+			Personality( Standard Least Squares ),
+			Emphasis( Effect Leverage ),
+			Run Model(
+				Surface Profiler(
+					1,
+					XRotate( -58.7061846032992 ),
+					YRotate( 20.9719816658593 ),
+					ZRotate( 40.0634916880838 ),
+					SetZAxis( Dose Delivered, Current Value( 1 ) ),
+					SetYVariable( Orifice Size )
+				),
+				:Dose Delivered << {Analysis of Variance( 0 ), Lack of Fit( 0 ),
+				Plot Actual by Predicted( 0 ), Plot Regression( 0 ), Plot Residual by Predicted( 0 ),
+				Plot Effect Leverage( 0 )}
+			)
+		)
+	),
+	New Column( "Flow Rate", Numeric, Continuous, Format( "Best", 10 ), Set Values( [ - 1, -1, 1, 1] ) ),
+	New Column( "Orifice Size", Numeric, Continuous, Format( "Best", 10 ), Set Values( [ - 1, 1, -1, 1] ) ),
+	New Column( "Dose Delivered",
+		Numeric,
+		Continuous,
+		Format( "Best", 10 ),
+		Formula( Exp( :Flow Rate / (:Orifice Size + 3) ) - :Flow Rate * Sin( :Orifice Size * 10 ) )
+	)
+);
+
+Surface Plot(
+	Columns( :Dose Delivered ),
+	Control Panel( 0 ),
+	Hide Lights Border( 1 ),
+	Formula( "Dose Delivered" ),
+	Graph Size( 723, 607 )
+);

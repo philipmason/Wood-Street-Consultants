@@ -1,0 +1,5 @@
+PROC SQL;
+   CREATE TABLE ? AS 
+   SELECT ?
+      FROM ?;
+QUIT;

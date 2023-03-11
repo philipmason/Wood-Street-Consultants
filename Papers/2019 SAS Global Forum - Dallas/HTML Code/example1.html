@@ -1,0 +1,30 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+var dataset=[
+    ["Phil","Mason","Father"],
+    ["Esther","Mason","Mother"],
+    ["Jacob","Mason","Son"],
+    ["Annie","Mason","Daughter"],
+    ["Reuben","Mason","Son"]
+] ;
+$(document).ready(function(){
+    $("#example").DataTable({
+        data: dataset,
+        columns: [
+            {title: "First Name"},
+            {title: "Last Name"},
+            {title: "Relationship"}
+        ]
+    }) ;
+}) ;
+</script>
+</head>
+<body>
+<table class="display" id="example">
+</table>
+</body>
+</html>

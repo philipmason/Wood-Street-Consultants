@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Extjs Toolbar Test</title>
+<link rel="stylesheet" type="text/css" href="http://tcensas1:8080/ext-js/resources/css/ext-all.css" />
+<script type="text/javascript" src="http://xs103:8080/ext-js/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="http://xs103:8080/ext-js/ext-all-debug.js"></script>
+<script type="text/javascript" src="http://xs103:8080/ext-js/examples/form/states.js"></script>
+
+</head>
+
+<body>
+<script type="text/javascript">
+
+Ext.onReady(function(){
+    Ext.QuickTips.init();
+
+	// Define a store
+    var states_store = new Ext.data.ArrayStore({
+        fields: ['abbr', 'state'],
+        data : Ext.exampledata.states // from states.js
+    });
+
+    var states_combo = new Ext.form.ComboBox({
+        store: states_store,
+        displayField: 'state',
+        typeAhead: true,
+        mode: 'local',
+        triggerAction: 'all',
+        emptyText: 'Select a state...',
+        selectOnFocus: true,
+		// Create a custom function, which will force the rendering of the list inside a menu so that clicking the list does not hide the menu
+        getListParent: function() {
+            return this.el.up('.x-menu');
+        }
+    });
+
+	// Initialize the toolbar variable
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+	var menu = new Ext.Toolbar.SplitButton({
+        text: 'Split Button with combo',
+		id: 'menu',
+        //handler: onButtonClick,
+        tooltip: {text:'This is a an example QuickTip for a toolbar item', title:'Tip Title'},
+        //iconCls: 'blist',
+        // Menus can be built/referenced by using nested menu config objects
+        menu : {
+			width: 180,
+	        style: {
+	            overflow: 'visible'     // For the combo popup
+	        },
+            items: [
+				'States:', states_combo
+            ]
+        }
+    });
+
+	// Add 'menu' item to the toolbar
+    tb.add(menu);
+
+	// Update the layout
+    tb.doLayout();
+
+});
+</script>
+<div id="container">
+    <div id="toolbar"></div>
+</div>
+
+<br /><br /><br /><br /><br />        
+</body>
+</html>

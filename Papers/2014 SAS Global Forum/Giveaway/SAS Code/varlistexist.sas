@@ -1,0 +1,41 @@
+%**************************************************************************;
+%** Study           : -generic-                                          **;
+%** Program name    : varlistexist.sas                                   **;
+%** Version number  : 1.0                                                **;
+%** Program type    : macro                                              **;
+%** Program location: /sas/bis/&env./macros                              **;
+%** Author          : Phil Mason                                         **;
+%** Site name       : Leiderdorp                                         **;
+%** Date            : 11Jun2009                                          **;
+%** SAS version     : 9.1.3                                              **;
+%** OS Name/version : SunOS 5.8                                          **;
+%** Data sets used  :                                                    **;
+%** Macros used     :                                                    **;
+%** Output created  :                                                    **;
+%** Purpose         : returns a list of only those variables that exist  **;
+%**                   from the list provided                             **;
+%** Usage           : data x(keep=%varlistexist(sashelp.class,sex cat)   **;
+%** Comment         :                                                    **;
+%** Parameters                                                           **;
+%**   dset          : dataset                                            **;
+%**   vars          : list of variables that may be in dataset           **;
+%**                 :                                                    **;
+%**************************************************************************;
+%** Modification history                                                 **;
+%** Version         :                                                    **;
+%** By              :                                                    **;
+%** Date            :                                                    **;
+%** Details         :                                                    **;
+%**************************************************************************;
+
+%macro varlistexist(dset,vars) ;
+  %let dsid=%sysfunc(open(&dset)) ;
+  %let count=%eval(%sysfunc(countc(%sysfunc(compbl(&vars)),%str( )))+1) ;
+  %do i=1 %to &count ;
+    %let item=%scan(&vars,&i,%str( )) ;
+    %if %sysfunc(varnum(&dsid,&item)) %then
+&item ;
+  %end ;
+  %let dsid=%sysfunc(close(&dsid)) ;
+%mend varlistexist ;
+/*%put %varlistexist(sashelp.class,sex cat age) ;*/

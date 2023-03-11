@@ -1,0 +1,21 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.js"></script>
+    <script>
+    $(document).ready(function(){
+        var g1 = new Dygraph(
+            document.getElementById("graph"),
+            "http://d351tq92/SASStoredProcess/do?_program=/User+Folders/phil/My+Folder/example8",
+            {title:"Air Quality"
+            ,xlabel: "Year"
+            ,drawGrid: true}
+            );                                   
+    }) ;
+    </script>
+</head>
+<body>
+    <div id="graph"></div>
+</body>
+</html>

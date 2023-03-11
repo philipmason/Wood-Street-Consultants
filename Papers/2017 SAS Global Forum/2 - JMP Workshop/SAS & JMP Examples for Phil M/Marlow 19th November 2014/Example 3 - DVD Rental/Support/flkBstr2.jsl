@@ -1,0 +1,82 @@
+﻿// ian.cox@jmp.com: 25May2012
+// Part 2 of Eric Hill's'FlickBuster' Demo from SGF 2011
+// Requires you to be on the SAS network!
+
+// ********************************************************************
+// Run blocks of code in sequence and inspect the log or other output
+// ********************************************************************
+NamesDefaultToHere(1);
+ClearGlobals();
+
+// Break any existing connection
+if (metaIsConnected(), MetaDisconnect());
+
+// Establish connection to SAS 9.3 JMPDev metadata server
+ok = MetaConnect("jmpdev.na.sas.com", 38561, "DefaultAuth", "sasdemo", "******", Prompt(IfNeeded));
+if (!ok, Beep(); Dialog("MetaConnect Failed"); Throw());
+
+// Make the connection to SAS . . .
+chosenServer = "SASApp";
+fb_sas = SAS Connect(chosenServer);
+if (!IsScriptable(fb_sas), Beep(); Dialog("SAS Coonection to "||chosenServer||" Failed"); Throw());
+
+// Check the 'FlkBstr' library we need is still there
+sasLibraries = fb_sas << SAS Get Librefs();
+if (!Contains(sasLibraries, "Flkbstr"), Beep(); Dialog("ERROR: Library needed for 'FlickBuster' demo is not present."); Throw());
+
+// Get a list of the datasets in the library
+dataSets = fb_sas << SAS Get Datasets("Flkbstr");
+sourceTables = {"RENTAL_DETAILS_VIEW"};
+// Check the table we need is present
+For(t=1, t<=NItems(sourceTables), t++,
+	if (!Contains(dataSets, sourceTables[t]), Beep(); Dialog("ERROR: One of the source tables is missing"); Throw());
+);
+// Write out the data (as a JMP file) to a public folder on the server
+fb_sas << SAS Submit( "\[
+proc export data=flkbstr.rental_details_view
+             outfile="\\jmpdev.na.sas.com\public\rental_details.jmp"
+             dbms=jmp
+             replace;
+run; ]\" );
+fb_sas << SAS Get Log();
+// Point JMP at the resulting file and open it
+// (Since the file is 55MB, we actually open a local copy to save time - Don't save the modified table and overwrite the downloaded one.
+dtDetails = Open( "rental_details.jmp" );
+// Fix up the JMP table
+Column(dtDetails, "CustID") << Set Modeling Type( Ordinal );
+Column(dtDetails, "ItemNo") << Set Modeling Type( Ordinal );
+Column(dtDetails, "OrderYear") << Set Modeling Type( Ordinal );
+Column(dtDetails, "Married") << Set Modeling Type( Nominal ); 
+Column(dtDetails, "Married") << Value Labels( {0 = "No", 1 = "Yes"} );
+Column(dtDetails, "Age") << Set Modeling Type( Ordinal ); 
+Column(dtDetails, "KidsUnder12") << Set Modeling Type( Nominal );
+Column(dtDetails, "KidsUnder12") << Value Labels( {0 = "No", 1 = "Yes"} );
+// Add scripts in case you forget what to do
+dtDetails << NewScript("Distribution",
+							Distribution(
+								Nominal Distribution( Column( :DaysOut ), Frequencies( 0 ) ),
+								Continuous Distribution(
+									Column( :LengthMins ),
+									Quantiles( 0 ),
+									Summary Statistics( 0 ),
+									Outlier Box Plot( 0 )
+								),
+								Nominal Distribution( Column( :Married ), Frequencies( 0 ) ),
+								Nominal Distribution( Column( :KidsUnder12 ), Frequencies( 0 ) )
+							);
+						);
+dtDetails << NewScript("Fit Model",
+							Fit Model(
+								Y( :DaysOut ),
+								Effects( :LengthMins, :Married, :KidsUnder12, :KidsUnder12 * :Married ),
+								Personality( "Standard Least Squares" ),
+								Set Alpha Level( 0.05 )
+								);
+							);
+
+// Close the connections
+fb_sas << SAS Disconnect();
+MetaDisconnect();
+
+Beep();
+Dialog("Now use Distribution and Fit Model with Prediction Profiler to explore and model the 'Rental Return Delay' data");

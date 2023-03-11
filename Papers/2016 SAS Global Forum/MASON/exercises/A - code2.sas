@@ -1,0 +1,4 @@
+%? ;
+proc print data=? ;
+run ;
+%? ;

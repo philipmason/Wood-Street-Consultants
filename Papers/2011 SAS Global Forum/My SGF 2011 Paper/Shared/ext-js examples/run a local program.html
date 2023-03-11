@@ -1,0 +1,14 @@
+<html>
+<body>
+<form action='C:\temp\test.bat'>
+<input type='submit'>
+</form>
+<%@language=JavaScript%>
+<%
+var iis;
+iis = new ActiveXObject("Wscript.Shell");
+iis.Run("C:\progra~1\sas\sas9~1.1\sas.exe");
+iis=null;
+%>
+</body>
+</html>

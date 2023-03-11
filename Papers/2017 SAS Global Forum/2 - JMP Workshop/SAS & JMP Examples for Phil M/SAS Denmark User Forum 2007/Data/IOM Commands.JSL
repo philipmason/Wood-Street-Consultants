@@ -1,0 +1,52 @@
+ClearGlobals();
+
+If(SASIsConnected(), SASDisConnect());
+SASConnect();
+SASAssignLibRefs("JMPWork", "D:\JMP2SAS");			// SAS LibRef
+SetPathVariable("$JMP2SAS", "/D:/JMP2SAS");			// JMP Env variable
+
+dt = CurrentDataTable();
+
+dataStep = dt << MakeSASDataStep;
+procStep = "
+   proc mi data=FitMiss noprint out=JMPWork.FitMissMI seed=3237851;   
+      var Oxygen RunTime RunPulse; 
+   run;
+   proc univariate data=JMPWork.FitMissMI noprint;   
+      var Oxygen RunTime RunPulse; 
+      output out=JMPWork.outuni mean=Oxygen RunTime RunPulse stderr=SOxygen SRunTime SRunPulse;
+      by _Imputation_;
+   run;
+   proc print data=JMPWork.outuni;   
+      title 'UNIVARIATE Means and Standard Errors';
+   run;
+   proc mianalyze data=JMPWork.outuni edf=30;   
+      modeleffects Oxygen RunTime RunPulse;
+      stderr SOxygen SRunTime SRunPulse; 
+   run;
+";
+
+NewWindow("Using SAS IOM Commands From JMP",
+   vb = vlistbox(
+      code = TextEditBox(dataStep||procStep, SetnLines(15)),
+      ButtonBox("Submit to SAS",
+         SAS Submit(code << GetText, NoOutputWindow);
+         log << SetText(SASGetLog());
+         out << SetText(SASGetOutput())
+         ),
+	TextBox(" "),
+      ob1 = OutlineBox("SAS Log in JMP",
+         log = TextBox(" ", SetWrap(1000))
+         ),
+      ob2 = OutlineBox("SAS Output in JMP",
+         out = TextBox(" ", SetWrap(1000))
+         )
+      )
+    );
+ 
+ // Use a SAS font
+ code << SetFont("SAS Monospace");
+ log << SetFont("SAS Monospace");
+ out << SetFont("SAS Monospace");
+
+

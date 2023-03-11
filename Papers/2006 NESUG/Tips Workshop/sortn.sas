@@ -1,0 +1,17 @@
+*** SORTING ARRAY ELEMENTS ;
+data _null_ ;
+  array v(50) 8 ;
+  do i=1 to 50 ;
+    v(i)=i ;
+  end ;
+  put 'Up: ' v(1)= v(2)= v(3)= v(48)= v(49)= v(50)= ;
+  call sortn(of v50-v1);
+  put 'Down: ' v(1)= v(2)= v(3)= v(48)= v(49)= v(50)= ;
+* sort values between 3 character variables ;
+* note: character variables must be same length to avoid errors ;
+  x='3 dogs ' ;
+  y='1 cat  ' ;
+  z='2 frogs' ;
+  call sortc(x,y,z) ;
+  put x= y= z= ;
+run ;

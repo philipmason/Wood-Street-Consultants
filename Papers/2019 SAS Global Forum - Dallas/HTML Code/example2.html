@@ -1,0 +1,25 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#example").DataTable({
+        ajax: "http://d351tq92/example2_json.txt"
+    }) ;
+}) ;
+</script>
+</head>
+<body>
+<table class="display" id="example">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Relationship</th>
+        </tr>
+    </thead>
+</table>
+</body>
+</html>

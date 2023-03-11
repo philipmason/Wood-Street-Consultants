@@ -1,0 +1,29 @@
+/**
+ * @class Ext.TabBar
+ */
+
+$tabbar-plain-size: 4px !default;
+
+//color
+$tabbar-base-color: lighten($panel-base-color, 4) !default;
+
+/**
+ * @class Ext.Tab
+ */
+
+//background
+$tab-base-color: desaturate($panel-base-color, 10) !default;
+$tab-over-base-color: lighten($tab-base-color, 4) !default;
+$tab-click-base-color: darken($tab-over-base-color, 5) !default;
+$tab-active-base-color: saturate(darken($tab-base-color, 7), 35) !default;
+$tab-active-over-base-color: darken($tab-active-base-color, 3) !default;
+
+//border
+$tab-border-radius: 5px 5px 0 0 !default;
+$tab-border-width: 1px 1px 0 1px !default;
+
+$tab-border-color: darken($tab-base-color, 10);
+$tab-over-border-color: false;
+$tab-click-border-color: false;
+$tab-active-border-color: saturate(darken($tab-border-color, 25), 7);
+$tab-active-over-border-color: saturate(darken($tab-border-color, 25), 10);

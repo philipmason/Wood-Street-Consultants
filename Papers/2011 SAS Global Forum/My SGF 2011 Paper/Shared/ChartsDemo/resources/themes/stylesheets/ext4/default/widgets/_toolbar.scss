@@ -1,0 +1,68 @@
+@mixin extjs-toolbar {
+  .#{$prefix}-toolbar {
+    font-size: 11px;
+    
+    border: 1px solid;
+    border-color: $toolbar-border-color;
+    background-color: $toolbar-background-color;
+    
+    .#{$prefix}-box-inner {
+      border-style: solid;
+      border-width: $toolbar-border-inner-width;
+      border-color: $toolbar-border-inner-color;
+    }
+    
+    .#{$prefix}-box-item {
+      margin: $toolbar-margin;
+    }
+  }
+  
+  .#{$prefix}-toolbar-footer {
+    background: transparent;
+    border-color: transparent;
+    margin-top: 3px;
+    .#{$prefix}-box-inner {
+      border-width: 0;
+    }
+    .#{$prefix}-box-item {
+      margin-bottom: 0px;
+    }
+  }
+  
+/*  .xtb-text {
+    line-height: 18px;
+    
+    color: mix($mix-color, #000, 30) !important;
+    text-shadow: 0 1px 0 lighten($mix-color, 24);
+  }
+  
+  .xtb-text,
+  .xtb-sep {
+    height: 22px;
+    height: 17px\9;
+    *height: 21px;
+    
+    //margin-left: $toolbar-side-margin !important;
+    //margin-right: $toolbar-side-margin !important;
+  }
+  
+  .xtb-sep {
+    width: 0;
+    
+    cursor: default;
+
+    border-left: 1px solid #B4BFCF;
+    border-right: 1px solid #E0E8F2;
+  }
+  
+  @if $include-no-border-radius {
+    .ext-no-linear-gradient,
+    .ext-no-border-radius {
+      .#{$prefix}-panel-fbar,
+      .#{$prefix}-toolbar {
+        background: theme-image($theme-name, 'toolbar/toolbar.gif') repeat-x;
+        background-color: image-background-color($theme-name, 'toolbar-bg.gif');
+      }
+    }
+  }*/
+}

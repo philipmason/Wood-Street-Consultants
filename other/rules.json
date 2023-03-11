@@ -1,0 +1,5 @@
+[
+  { "regex": "ERROR: ", "type": "Error" },
+  { "regex": "NOTE: The data set ", "type": "Input" },
+  { "regex": "NOTE: DATA statement used:", "type": "end" }
+]

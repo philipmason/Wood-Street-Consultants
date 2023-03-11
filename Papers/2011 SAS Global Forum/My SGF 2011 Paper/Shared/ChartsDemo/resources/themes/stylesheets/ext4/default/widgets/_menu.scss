@@ -1,0 +1,165 @@
+/**
+ * @class Ext.menu.*
+ */
+@mixin extjs-menu {
+  .#{$prefix}-menu {
+    z-index: 15000;
+    
+  	zoom: 1;
+  	
+  	background: repeat-y;
+  	background-color: $menu-background-color;
+  	
+    padding: 2px;
+    
+    overflow: hidden;
+    overflow-y: hidden;
+  }
+  
+  .#{$prefix}-menu-floating {
+    border: 1px solid $menu-border-color;
+  }
+  
+  @if $include-ie {
+    .ext-ie .#{$prefix}-menu {
+      overflow: hidden;
+    }
+  }
+  
+  .#{$prefix}-menu a {
+    text-decoration: none !important;
+  }
+  
+  .#{$prefix}-menu-icon-separator {
+    position: absolute;
+    top: 0;
+    left: $menu-item-indent + 1;
+    
+    z-index: -1;
+    
+    border-right: solid 1px $menu-separator-border-color;
+    
+    width: 0;
+    height: 100%;
+  }
+  
+  .#{$prefix}-menu-item-separator {
+    width: 100%;
+    height: 0;
+    
+    border-top: solid 1px $menu-separator-border-color;
+    
+    
+    background:red;
+    margin: 1px 0;
+  }
+  
+  .#{$prefix}-menu-item {
+  	@include no-select;
+  	@include inline-block;
+  	
+  	cursor: pointer;
+    display: block;
+    
+    line-height: 16px;
+    
+    outline-color: -moz-use-text-color;
+    outline-style: none;
+    outline-width: 0;
+    
+    padding: 1px;
+
+		border: 1px solid #fff;
+    
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  
+  .#{$prefix}-menu-item-active {
+		@include background-gradient($menu-item-active-background-color, 'matte');
+		
+		border-color: $menu-item-active-border-color;
+  }
+  
+  .#{$prefix}-menu-item-arrow {
+		float: left;
+	
+  	background-repeat: no-repeat;
+		background-position: right;
+		background-image: theme-image($theme-name, 'menu/menu-parent.gif') !important;
+  }
+
+  .#{$prefix}-menu-sep {
+  	display: block;
+  	
+  	font-size: 1px;
+  	line-height: 1px;
+  	
+  	margin: 2px 3px;
+  	
+  	border-bottom: 1px solid;
+  	
+    overflow: hidden;
+  }
+  
+  .#{$prefix}-menu-item-indent {
+    padding-left: $menu-item-indent;
+  }
+  
+  .#{$prefix}-menu-item-disabled {
+    @include opacity(.5);
+  }
+    
+  .#{$prefix}-menu-item-link {
+    display: block;
+    
+    text-decoration: none !important;
+    white-space: nowrap;
+    
+    margin: 3px;
+    
+    @include no-select;
+  }
+  
+  .#{$prefix}-menu-item-icon,
+  .#{$prefix}-menu-item-text {
+		float: left;
+  }
+  
+  .#{$prefix}-menu-item-icon {
+    margin-right: 5px;
+    
+    width: 16px;
+    
+    background: no-repeat left center;
+  }
+  
+  .#{$prefix}-menu-item-text {
+    font-size: 11px;
+    
+    padding: 0 5px;
+    margin-top: 2px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $menu-text-color;
+  }
+  
+  .#{$prefix}-menu-item-checked {
+    background-image: theme-image($theme-name, 'menu/checked.gif') !important;
+  }
+  
+  .#{$prefix}-menu-item-unchecked {
+    background-image: theme-image($theme-name, 'menu/unchecked.gif') !important;
+  }
+
+	@if $include-no-gradients {
+		.ext-no-linear-gradients {
+			.#{$prefix}-menu-item-active {
+		    background-repeat: repeat-x;
+		    background-position: left bottom;
+				background-image: theme-image($theme-name, 'menu/item-over.gif');
+			}
+		}
+	}
+}

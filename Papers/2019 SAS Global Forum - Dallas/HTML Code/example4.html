@@ -1,0 +1,35 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function(){
+    $.ajax({
+        url: "http://d351tq92/SASStoredProcess/do?_program=/User+Folders/phil/My+Folder/example2",
+        dataType: "json",
+        success: function (data_from_stp) {
+            console.log("SUCCESS:");
+            console.log(data_from_stp);
+            $("#example").DataTable({
+                data: data_from_stp.data,
+                columns: [
+                    {title: "First"},
+                    {title: "Last"},
+                    {title: "Relationship"}
+                ]
+            });
+        }, // success
+        error: function (data) {
+            console.log("ERROR:");
+        } // error
+    }); // ajax
+
+}) ;
+</script>
+</head>
+<body>
+<table class="display" id="example">
+</table>
+</body>
+</html>

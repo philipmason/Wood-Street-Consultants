@@ -1,0 +1,11 @@
+*** putlog ;
+data test ;
+  put 'This goes to LOG by default' ;
+  file print ;
+  put 'This goes to OUTPUT window, since I selected print' ;
+  putlog 'but this still goes to the LOG' ;
+  put 'This goes to OUTPUT' ;
+  putlog 'NOTE: and I can write proper messages using colours' ;
+  putlog 'WARNING: ...' ;
+  putlog 'ERROR: ...' ;
+run ;

@@ -1,0 +1,31 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $.ajax({
+            url: "http://d351tq92/SASStoredProcess/do?_program=/User+Folders/phil/My+Folder/example7",
+            dataType: "json",
+            success: function (data_from_stp) {
+                console.log("SUCCESS:");
+                console.log(data_from_stp);
+                $("#table1").pivotUI(data_from_stp['sashelp.orsales']) ;
+                $("#table2").pivotUI(data_from_stp['sashelp.snacks']) ;
+            }, // success
+            error: function (data) {
+                console.log("ERROR:");
+            } // error
+        }); // ajax
+    }) ;
+    </script>
+</head>
+<body>
+    <h3>sashelp.orsales (912 rows, 200k)</h3>
+    <div id="table1"></div>
+    <h3>sashelp.snacks (35,770 rows, 3meg)</h3>
+    <div id="table2"></div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Hands on Workshop directory for Phil Mason
+C:\HOW\Mason
+
+Root of Web Server
+C:\SAS\Config\Lev1\Web\WebServer\htdocs

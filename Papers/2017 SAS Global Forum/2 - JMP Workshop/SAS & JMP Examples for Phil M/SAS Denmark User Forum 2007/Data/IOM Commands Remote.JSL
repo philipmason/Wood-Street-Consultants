@@ -1,0 +1,80 @@
+ClearGlobals();
+
+// Break any existing connection
+If (metaIsConnected(), MetaDisconnect());
+If (SASIsConnected(), SASDisConnect());
+
+// Use a metadata server to direct us to a remote SAS server . . .
+ok = MetaConnect("d12865.na.sas.com", 8561, "DefaultAuth", "sasdemo", "Password1", Prompt(IfNeeded));
+if (!ok, Beep(); Dialog("MetaConnect Failed"); Throw());
+
+// Now get a list of SAS Servers registered in the current repository
+servers = MetaGetServers();
+
+// Connect to the first SAS server on the list
+SASServ = SASConnect(servers[1], Prompt(IfNeeded));
+SASConnect();
+If (!SASIsConnected(), Beep(); Dialog("Failed to connect to "||servers[1]); Throw());
+
+// Find out about the SAS environment
+libRefs = SASGetLibRefs();							// Gives a list of libnames already defined
+Show(libRefs);
+fileRefs = SASGetFileRefs();						// Gives two lists in one to one correspondance
+Show(NItems(fileRefs[1]), fileRefs[1]);
+Show(NItems(fileRefs[2]), fileRefs[2]);
+// What files are associated with each fileRef? 
+for (i=1, i<=NItems(fileRefs[1]), i++,
+	fileNames = SASGetFileNames(fileRefs[1][i]);	// Need to use the first list from SASGetFileRefs(?)
+	Show(i, fileRefs[2][i], fileNames)
+);
+
+Throw();
+
+SASAssignLibRefs("JMPWork", "D:\JMP2SAS");			// SAS LibRef
+SetPathVariable("$JMP2SAS", "/D:/JMP2SAS");			// JMP Env variable
+
+dt = CurrentDataTable();
+
+dataStep = dt << MakeSASDataStep;
+procStep = "
+   proc mi data=FitMiss noprint out=JMPWork.FitMissMI seed=3237851;   
+      var Oxygen RunTime RunPulse; 
+   run;
+   proc univariate data=JMPWork.FitMissMI noprint;   
+      var Oxygen RunTime RunPulse; 
+      output out=JMPWork.outuni mean=Oxygen RunTime RunPulse stderr=SOxygen SRunTime SRunPulse;
+      by _Imputation_;
+   run;
+   proc print data=JMPWork.outuni;   
+      title 'UNIVARIATE Means and Standard Errors';
+   run;
+   proc mianalyze data=JMPWork.outuni edf=30;   
+      modeleffects Oxygen RunTime RunPulse;
+      stderr SOxygen SRunTime SRunPulse; 
+   run;
+";
+
+NewWindow("Using SAS IOM Commands From JMP",
+   vb = vlistbox(
+      code = TextEditBox(dataStep||procStep, SetnLines(15)),
+      ButtonBox("Submit to SAS",
+         SAS Submit(code << GetText, NoOutputWindow);
+         log << SetText(SASGetLog());
+         out << SetText(SASGetOutput())
+         ),
+	TextBox(" "),
+      ob1 = OutlineBox("SAS Log in JMP",
+         log = TextBox(" ", SetWrap(1000))
+         ),
+      ob2 = OutlineBox("SAS Output in JMP",
+         out = TextBox(" ", SetWrap(1000))
+         )
+      )
+    );
+ 
+ // Use a SAS font
+ code << SetFont("SAS Monospace");
+ log << SetFont("SAS Monospace");
+ out << SetFont("SAS Monospace");
+
+

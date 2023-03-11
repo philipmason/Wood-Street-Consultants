@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<title>Drawing &amp; Charts | Sencha Ext JS 4 Preview</title>
+
+<style type="text/css">
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff;
+    color: #444;
+    font: normal 12px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px 0 100px;
+    width: 960px;
+}
+
+h1 {
+    color: #111;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 30px;
+    margin: 0.67em 0 30px;
+    padding-bottom: 0px;
+}
+
+a#logo {
+    background: transparent url(examples/shared/logo-sencha-sm.png) no-repeat 0 100%;
+    display: block;
+    height: 58px;
+    margin: 0px;
+    overflow: hidden;
+    padding: 0px;
+    text-indent: 150%;
+    white-space: nowrap;
+    width: 134px;
+}
+
+h2 {
+    border-bottom: 1px solid #d7d7d7;
+    color: #555;
+    clear: both;
+    font-weight: 400;
+    margin: 0.83em 0 36px;
+}
+
+.examples {
+    list-style: none;
+    margin: 0;
+    overflow: auto;
+    padding: 10px;
+}
+
+.examples li {
+    float: left;
+}
+
+.examples li:nth-child(4) {
+    margin-right: 0;
+}
+
+.examples a {
+    color: #434343;
+    display: block;
+    margin: 0 45px 4em 0;
+    text-align: center;
+    text-decoration: none;
+    width: 188px;
+}
+
+.examples a span {
+    background: white;
+    border: 1px solid #c2c2c2;
+    -webkit-border-radius: 1px;
+    -moz-border-radius:    1px;
+    -o-border-radius:      1px;
+    border-radius:         1px;
+    -webkit-box-shadow : 0 1px 3px rgba(0,0,0,0.35);
+    -moz-box-shadow :    0 1px 3px rgba(0,0,0,0.35);
+    -o-box-shadow :      0 1px 3px rgba(0,0,0,0.35);
+    box-shadow :         0 1px 3px rgba(0,0,0,0.35);
+    display: block;
+    padding: 7px;
+    width: 172px;
+}
+
+.examples a .thumb {
+    border: 1px solid #bbb;
+    border-color: #B2B2B2 #BFBFBF #BFBFBF #B2B2B2;
+    display: block;
+    margin: 0 auto;
+    width: 170px;
+}
+
+.examples a strong {
+    display: block;
+    font-weight: normal;
+    height: 40px;
+    margin: 0 auto;
+    padding: 20px 10px 0;
+    width: 170px;
+}
+
+.examples a:hover strong {
+    text-decoration: underline;
+}
+
+.examples a:hover span {
+    -webkit-box-shadow : 0 1px 5px rgba(0,89,208,0.45);
+    -moz-box-shadow :    0 1px 5px rgba(0,89,208,0.45);
+    -o-box-shadow :      0 1px 5px rgba(0,89,208,0.45);
+    box-shadow :         0 1px 5px rgba(0,89,208,0.45);
+}
+
+.examples a:active span,
+.examples a:active strong {
+    position: relative;
+    top: 1px;
+}
+
+p {
+    margin: 1em 0;
+}
+
+#copyright {
+    clear: both;
+    color: #999;
+    font-size: 12px;
+    font-weight: normal;
+    height: 16px;
+    line-height: 24px;
+    margin: 36px 0 0;
+    text-align: left;
+}
+
+hr {
+    color: #e0e0e0;
+    background-color: #e0e0e0;
+    height: 1px;
+    border: none;
+    outline: none;
+}
+
+#copyright a {
+    color: #999;
+    text-decoration: none;
+}
+
+
+</style>
+
+</head>
+<body>
+<header>
+    <a id="logo" href="http://www.sencha.com">Sencha</a>
+    <h1>Sencha Ext JS 4 Preview &mdash; Drawing &amp; Charts</h1>
+</header>
+
+<h2>Drawing</h2>
+
+<ol class="examples">
+    <li>
+        <a href="examples/draw/Sencha.html">
+            <span><img class="thumb" src="examples/shared/thumbs/sencha-resizer.png" alt="text" height="128" width="170" /></span>
+            <strong>Resizeable Sencha Logo Component</strong>
+        </a>
+    </li>
+    <li>
+        <a href="examples/draw/RotateText.html">
+            <span><img class="thumb" src="examples/shared/thumbs/rotate-text.png" alt="text" height="128" width="170" /></span>
+            <strong>Rotating Text with a Draw Component</strong>
+        </a>
+    </li>
+    <li>
+        <a href="examples/draw/Tiger.html">
+            <span><img class="thumb" src="examples/shared/thumbs/tiger.png" alt="text" height="128" width="170" /></span>
+            <strong>Draggable Tiger Component</strong>
+        </a>
+    </li>
+</ol>
+
+<h2>Charts</h2>
+
+<ol class="examples">
+    <li id="Area">
+        <a href="examples/chart/Area.html">
+            <span><img class="thumb" src="examples/shared/thumbs/area.png" alt="text" height="128" width="170" /></span>
+            <strong>Area</strong>
+        </a>
+    </li>
+    <li>
+        <a href="examples/chart/Area - Aggregate.html">
+            <span><img class="thumb" src="examples/shared/thumbs/area-aggregate.png" alt="text" height="128" width="170" /></span>
+            <strong>Area Chart - Aggregate</strong>
+        </a>
+    </li>
+    <li>
+        <a href="examples/chart/Area - BrowserStats.html">
+            <span><img class="thumb" src="examples/shared/thumbs/area-browsers.png" alt="text" height="128" width="170" /></span>
+            <strong>Area Chart - Browser Stats</strong>
+        </a>
+    </li>
+    <li id="Bar">
+        <a href="examples/chart/Bar.html">
+            <span><img class="thumb" src="examples/shared/thumbs/bar.png" alt="text" height="128" width="170" /></span>
+            <strong>Bar Chart</strong>
+        </a>
+    </li>
+    <li>
+        <a href="examples/chart/BarGrouped.html">
+            <span><img class="thumb" src="examples/shared/thumbs/bar-grouped.png" alt="text" height="128" width="170" /></span>
+            <strong>Bar Chart - Grouped</strong>
+        </a>
+    </li>
+    <li id="Column">
+        <a href="examples/chart/Column.html">
+            <span><img class="thumb" src="examples/shared/thumbs/column.png" alt="text" height="128" width="170" /></span>
+            <strong>Column Chart</strong>
+        </a>
+    </li>
+    <li id="Line">
+        <a href="examples/chart/Line.html">
+            <span><img class="thumb" src="examples/shared/thumbs/line.png" alt="text" height="128" width="170" /></span>
+            <strong>Line Chart</strong>
+        </a>
+    </li>
+    <li id="Live">
+        <a href="examples/chart/Live Animated.html">
+            <span><img class="thumb" src="examples/shared/thumbs/live-animated.png" alt="text" height="128" width="170" /></span>
+            <strong>Live Animated Chart</strong>
+        </a>
+    </li>
+    <li>
+        <a href="examples/chart/LiveUpdates.html">
+            <span><img class="thumb" src="examples/shared/thumbs/live-updated.png" alt="text" height="128" width="170" /></span>
+            <strong>Live Updated Chart</strong>
+        </a>
+    </li>
+    <li id="Mixed">
+        <a href="examples/chart/Mixed.html">
+            <span><img class="thumb" src="examples/shared/thumbs/mixed.png" alt="text" height="128" width="170" /></span>
+            <strong>Mixed Series Chart</strong>
+        </a>
+    </li>
+    <li id="Pie">
+        <a href="examples/chart/Pie.html">
+            <span><img class="thumb" src="examples/shared/thumbs/pie.png" alt="text" height="128" width="170" /></span>
+            <strong>Pie Chart</strong>
+        </a>
+    </li>
+    <li>
+        <a href="examples/chart/PieRenderer.html">
+            <span><img class="thumb" src="examples/shared/thumbs/pie-renderer.png" alt="text" height="128" width="170" /></span>
+            <strong>Pie Chart - Renderer</strong>
+        </a>
+    </li>
+    <li id="Radar">
+        <a href="examples/chart/Radar.html">
+            <span><img class="thumb" src="examples/shared/thumbs/radar.png" alt="text" height="128" width="170" /></span>
+            <strong>Radar Chart</strong>
+        </a>
+    </li>
+    <li>
+        <a href="examples/chart/RadarFill.html">
+            <span><img class="thumb" src="examples/shared/thumbs/radar-filled.png" alt="text" height="128" width="170" /></span>
+            <strong>Radar Chart - Filled</strong>
+        </a>
+    </li>
+    <li id="Scatter">
+        <a href="examples/chart/Scatter.html">
+            <span><img class="thumb" src="examples/shared/thumbs/scatter.png" alt="text" height="128" width="170" /></span>
+            <strong>Scatter Chart</strong>
+        </a>
+    </li>
+    <li>
+        <a href="examples/chart/ScatterRenderer.html">
+            <span><img class="thumb" src="examples/shared/thumbs/scatter-renderer.png" alt="text" height="128" width="170" /></span>
+            <strong>Scatter Chart - Renderer</strong>
+        </a>
+    </li>
+</ol>
+
+<hr />
+
+<footer>
+
+    <p><em>Last updated: February 9, 2010</em></p>
+
+    <p id="copyright">&copy; 2011 <a href="http://www.sencha.com/">Sencha Inc.</a></p>
+
+</footer>
+
+</body>
+</html>

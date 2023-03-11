@@ -1,0 +1,75 @@
+// ===============================
+// ========= BASE PANEL ==========
+// ===============================
+$panel-border-radius: null !default;
+$panel-base-color: $base-color !default;
+$panel-background-color: $panel-base-color !default;
+$panel-border-color: saturate(darken($panel-base-color, 10%), 10%) !default;
+
+
+// ===============================
+// ========= PANEL BODY ==========
+// ===============================
+$panel-body-background-color: #fff !default;
+$panel-body-border-width: 1px !default;
+$panel-body-border-style: solid !default;
+$panel-body-border-color: $panel-border-color !default;
+
+
+// ===============================
+// ======== PANEL HEADER =========
+// ===============================
+$panel-header-border-width: 1px !default;
+$panel-header-border-style: solid !default;
+$panel-header-border-color: $panel-border-color !default;
+
+//padding
+$panel-header-padding: 5px !default;
+
+//fonts
+$panel-header-color: darken($panel-base-color, 60%) !default;
+$panel-header-font-size: 11px !default;
+$panel-header-font-weight: bold !default;
+$panel-header-font-family: $font-family !default;
+$panel-header-text-shadow: 0 0 0 !default;
+
+//background
+$panel-header-background-color: $panel-base-color !default;
+$panel-header-background-gradient: 'panel-header' !default;
+
+
+// ===============================
+// ======== PANEL TOOLS ==========
+// ===============================
+$tool-size: 15px !default;
+$tool-margin: 4px 5px !default;
+
+
+// ===============================
+// ======== FRAMED PANEL =========
+// ===============================
+$frame-base-color: $panel-base-color !default;
+
+//border
+$panel-frame-background-color: $frame-base-color !default;
+$panel-frame-border-radius: 4px !default;
+$panel-frame-border-width: 1px !default;
+$panel-frame-border-style: solid !default;
+$panel-frame-border-color: $panel-border-color !default;
+$panel-frame-padding: 3px !default;
+
+/*$frame-header-inner-border-width: 1px 0 0 0 !default;
+$frame-header-inner-border-style: solid !default;
+$frame-header-inner-border-color: lighten($frame-base-color, 10) !default;*/
+/*$frame-body-border-color: $panel-border-color !default;*/
+
+//padding
+/*$frame-header-padding: 2px !default;*/
+
+//fonts
+/*$frame-header-color: #fff !default;
+$frame-header-font-size: 12px !default;
+$frame-header-font-weight: bold !default;
+$frame-header-text-shadow: 0 -1px 0 darken($frame-base-color, 20) !default;
+*/
+//background

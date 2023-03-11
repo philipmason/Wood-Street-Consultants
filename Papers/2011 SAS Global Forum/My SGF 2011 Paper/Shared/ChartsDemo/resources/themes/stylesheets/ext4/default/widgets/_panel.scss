@@ -1,0 +1,338 @@
+/**
+ * @class Ext.Panel
+ * Used to create the base structure of an Ext.Panel
+ */
+@mixin extjs-panel {
+/*  $panel-header-actual-padding: nth($panel-header-padding, 1);
+
+  @if $panel-header-actual-padding < nth($panel-border-radius, 1) {
+    $panel-header-actual-padding: nth($panel-border-radius, 1);
+  }*/
+
+  .#{$prefix}-panel {
+    @if $panel-border-radius != null {
+      @include border-radius($border-radius);
+    }
+    
+    overflow: hidden;
+    position: relative;
+  }
+  
+  @include x-frame(
+    /* Cls */
+    'panel',
+    /* UI */
+    null, 
+    
+    /* Radius, width, padding and background-color */
+    $panel-frame-border-radius, 
+    $panel-frame-border-width, 
+    $panel-frame-padding, 
+    $panel-frame-background-color
+  );
+  
+  .#{$prefix}-panel-framed {
+    border-color: $panel-frame-border-color;
+  }
+      
+  //panel header
+  .#{$prefix}-panel-header {
+    border-width: $panel-header-border-width;
+    border-style: $panel-header-border-style;
+    border-bottom-width: 0;
+    border-color: $panel-header-border-color;
+    padding: $panel-header-padding;
+    @include background-gradient($panel-header-background-color, $panel-header-background-gradient);
+    
+    .#{$prefix}-box-layout-ct {
+      @include border-radius($panel-border-radius);
+    }
+  }
+  
+  .ext-nbr .#{$prefix}-panel-header {
+    background-image: theme-image($theme-name, 'panel-header/header-bg.png');
+  }
+
+  .#{$prefix}-panel-draggable, .#{$prefix}-panel-draggable .#{$prefix}-panel-header-text, .#{$prefix}-window-draggable, .#{$prefix}-window-draggable .#{$prefix}-window-header-text{
+    cursor: move;
+  }
+
+  // A ghost is just a Panel. The only extra it needs is opacity.
+  .#{$prefix}-panel-ghost, .#{$prefix}-window-ghost {
+    @include opacity(0.65);
+    cursor: move;
+  }
+
+  .ext-webkit {
+    #{$prefix}-panel-ghost > div.x-panel-body, #{$prefix}-panel-ghost > div.x-window-body {
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, from(white), color-stop(0.02, #E5ECF7), to(#B7CBE7));
+    }
+  }
+
+  .ext-gecko {
+    .#{$prefix}-panel-ghost > div.x-panel-body, , #{$prefix}-panel-ghost > div.x-window-body {
+      background-image: -moz-linear-gradient(#FFFFFF, #E5ECF7 2%, #B7CBE7);
+    }
+  }
+
+/*  .ext-gecko {
+    .#{$prefix}-panel-header {
+      .#{$prefix}-box-layout-ct {
+        padding: $panel-header-actual-padding + 2;
+      }
+    }
+  }
+
+  .ext-opera {
+    .#{$prefix}-panel-header {
+      .#{$prefix}-box-layout-ct {
+        padding: $panel-header-actual-padding + 4;
+      }
+    }
+  }*/
+
+  .#{$prefix}-container-header-wrapper {
+      height: 100%;
+      width: 100%;
+  }
+
+  .#{$prefix}-panel-header-text {
+    @include no-select;
+    
+    color: $panel-header-color;
+    font-family: $panel-header-font-family;
+    font-size: $panel-header-font-size;
+    font-weight: $panel-header-font-weight;
+    text-shadow: $panel-header-text-shadow;
+  }
+  
+  //panel body
+  .#{$prefix}-panel-body {
+    overflow: hidden;
+    position: relative;
+    background: $panel-body-background-color;
+    border-color: $panel-body-border-color;
+    border-style: $panel-body-border-style;
+    border-width: $panel-body-border-width;
+  }
+
+  .#{$prefix}-panel-body-framed {
+    background: $panel-frame-background-color;
+  }
+      
+  //panel with border:false specified
+  .#{$prefix}-panel-noborder-docked-top,
+  .#{$prefix}-panel-noborder-docked-bottom,
+  .#{$prefix}-panel-noborder-docked-left,
+  .#{$prefix}-panel-noborder-docked-right,
+  .#{$prefix}-panel-noborder-body {
+    border-width: 0 !important;
+  }
+  
+  /**
+   * Dock Layouts
+   * @todo move this somewhere else?
+   */
+  .#{$prefix}-docked-top {
+    border-bottom-width: 0 !important;
+    
+    .#{$prefix}-panel-wrap-child {
+      border-bottom-width: 0 !important;
+    }
+  }
+  
+  .#{$prefix}-docked-bottom {
+    border-top-width: 0 !important;
+    
+    .#{$prefix}-panel-wrap-child {
+      border-top-width: 0 !important;
+    }
+  }
+  
+  .#{$prefix}-docked-left {
+    border-right-width: 0 !important;
+
+    .#{$prefix}-panel-wrap-child {
+      border-right-width: 0 !important;
+    }
+  }
+  
+  .#{$prefix}-docked-right {
+    border-left-width: 0 !important;
+
+    .#{$prefix}-panel-wrap-child {
+      border-left-width: 0 !important;
+    }
+  }
+  
+/*  .#{$prefix}-docked-left,
+  .#{$prefix}-docked-right {
+    .#{$prefix}-tool {
+      div {
+        margin-left: 0;
+      }
+    }
+  }*/
+  
+  .#{$prefix}-panel-collapsed {
+    .#{$prefix}-window-header,
+    .#{$prefix}-panel-header {
+      border-bottom: 1px solid;
+      border-color: $panel-body-border-color;
+/*      @include border-bottom-radius(nth($panel-border-radius, 1));*/
+    }
+  }
+
+  .#{$prefix}-panel-collapsed-placeholder {
+    padding: 5px;
+    
+    @include background-gradient($panel-base-color, 'matte', left);
+    
+    border: 1px solid;
+/*    @include border-radius(nth($panel-border-radius, 1));*/
+    
+    border-color: $panel-body-border-color;
+  }
+
+  /*
+  @if $include-no-border-radius {
+    //.ext-generator,
+    .ext-no-border-radius {
+      .#{$prefix}-window,
+      .#{$prefix}-panel {
+        @include border-radius(0);
+        
+        @if nth($panel-border-radius, 1) == 0 {
+          border-width: 1px 1px 0 1px;
+        }
+        
+        $panel-tl-height: image-height($theme-name, 'panel-tl.gif');
+        $panel-ml-height: image-height($theme-name, 'panel-ml.gif');
+        $offset: 0;
+        
+        .#{$prefix}-window-header,
+        .#{$prefix}-panel-header {
+          border-width: 0;
+          @include border-radius(0);
+          
+          background: transparent;
+          background-position: 0 background-position($offset, $panel-tl-height, 0);
+          
+          .#{$prefix}-box-layout-ct {
+            border-width: 0;
+            @include border-radius(0);
+            border-color: transparent;
+            
+            padding: 0;
+          }
+          
+          .#{$prefix}-box-item {
+            padding: 0;
+          }
+        }
+        
+        .#{$prefix}-window-header-tl, .#{$prefix}-window-header-tc, .#{$prefix}-window-header-tr, .#{$prefix}-window-header-ml, .#{$prefix}-window-header-mc, .#{$prefix}-window-header-mr, .#{$prefix}-window-header-bl, .#{$prefix}-window-header-bc, .#{$prefix}-window-header-br,
+        .#{$prefix}-panel-header-tl, .#{$prefix}-panel-header-tc, .#{$prefix}-panel-header-tr, .#{$prefix}-panel-header-ml, .#{$prefix}-panel-header-mc, .#{$prefix}-panel-header-mr, .#{$prefix}-panel-header-bl, .#{$prefix}-panel-header-bc, .#{$prefix}-panel-header-br {
+          background-image: theme-image($theme-name, 'panel/panel.gif');
+          background-repeat: no-repeat;
+        }
+        .#{$prefix}-window-header-tc, .#{$prefix}-window-header-bc, .#{$prefix}-window-header-mc,
+        .#{$prefix}-panel-header-tc, .#{$prefix}-panel-header-bc, .#{$prefix}-panel-header-mc { background-repeat: repeat-x; }
+        
+        .#{$prefix}-window-header-mc, .#{$prefix}-panel-header-mc { background-color: image-background-color($theme-name, 'panel-ml.gif'); }
+        
+        .#{$prefix}-window-header-tl,
+        .#{$prefix}-panel-header-tl {
+          padding-left: $panel-header-actual-padding;
+          
+          background-position: 0 background-position($offset, $panel-tl-height, 0);
+        }
+        
+        .#{$prefix}-window-header-tr,
+        .#{$prefix}-panel-header-tr {
+          padding-right: $panel-header-actual-padding;
+          
+          background-position: 100% background-position($offset, $panel-tl-height, 1);
+        }
+        
+        .#{$prefix}-window-header-ml,
+        .#{$prefix}-panel-header-ml {
+          padding-left: $panel-header-actual-padding;
+          
+          background-position: 0 background-position($offset, $panel-tl-height, 2);
+        }
+        $offset: $offset + $panel-ml-height;
+        
+        .#{$prefix}-window-header-mr,
+        .#{$prefix}-panel-header-mr {
+          padding-right: $panel-header-actual-padding;
+          
+          background-position: 100% background-position($offset, $panel-tl-height, 2);
+        }
+        $offset: $offset + $panel-ml-height;
+        
+        .#{$prefix}-window-header-bl,
+        .#{$prefix}-panel-header-bl {
+          padding-left: $panel-header-actual-padding;
+          
+          background-position: 0 background-position($offset, $panel-tl-height, 2);
+        }
+
+        .#{$prefix}-window-header-br,
+        .#{$prefix}-panel-header-br {
+          padding-right: $panel-header-actual-padding;
+          
+          background-position: 100% background-position($offset, $panel-tl-height, 3);
+        }
+        
+        .#{$prefix}-window-header-tc,
+        .#{$prefix}-panel-header-tc {
+          padding-top: $panel-header-actual-padding;
+          
+          background-position: 0 background-position($offset, $panel-tl-height, 4);
+        }
+        $offset: $offset + $panel-tl-height;
+        
+        .#{$prefix}-window-header-mc,
+        .#{$prefix}-panel-header-mc {
+          background-position: 0 background-position($offset, $panel-tl-height, 4);
+        }
+        
+        .#{$prefix}-window-header-bc,
+        .#{$prefix}-panel-header-bc {
+          padding-top: $panel-header-actual-padding;
+          
+          background-position: bottom left;
+        }
+        
+        @if nth($panel-border-radius, 1) == 0 {
+          .#{$prefix}-panel-header-tl, .#{$prefix}-panel-header-tc, .#{$prefix}-panel-header-tr, .#{$prefix}-panel-header-ml, .#{$prefix}-panel-header-mc, .#{$prefix}-panel-header-mr, .#{$prefix}-panel-header-bl, .#{$prefix}-panel-header-bc, .#{$prefix}-panel-header-br {
+            background-image: none;
+            background: transparent;
+          }
+          
+          .#{$prefix}-panel-header {
+            background-image: theme-image($theme-name, 'panel/panel-bg.gif');
+            background-repeat: repeat-x;
+            background-position: 0 -1px;
+          }
+        }
+        
+        .#{$prefix}-panel-noborder-docked-top,
+        .#{$prefix}-panel-noborder-docked-bottom,
+        .#{$prefix}-panel-noborder-docked-left,
+        .#{$prefix}-panel-noborder-docked-right {
+          .#{$prefix}-window-header-tl, .#{$prefix}-window-header-tc, .#{$prefix}-window-header-tr, .#{$prefix}-window-header-ml, .#{$prefix}-window-header-mc, .#{$prefix}-window-header-mr, .#{$prefix}-window-header-bl, .#{$prefix}-window-header-bc, .#{$prefix}-window-header-br,
+          .#{$prefix}-panel-header-tl, .#{$prefix}-panel-header-tc, .#{$prefix}-panel-header-tr, .#{$prefix}-panel-header-ml, .#{$prefix}-panel-header-mc, .#{$prefix}-panel-header-mr, .#{$prefix}-panel-header-bl, .#{$prefix}-panel-header-bc, .#{$prefix}-panel-header-br {
+            background-image: theme-image($theme-name, 'panel/panel-noborder.gif');
+          }
+          
+          @if nth($panel-border-radius, 1) == 0 {
+            .#{$prefix}-panel-header {
+              background-image: theme-image($theme-name, 'panel/panel-noborder-bg.gif');
+            }
+          }
+        }
+      }
+    }*/
+}

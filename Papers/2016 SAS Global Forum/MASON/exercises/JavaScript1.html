@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script type='text/javascript'>
+        var popwin = null;
+
+        function open_popup() {
+            if (popwin == null)
+                popwin = window.open('?a URL for a web page?', '', 'top=?number e.g. 100?, left=?number e.g. 100?, width=?number e.g. 100?, height=?number e.g. 100?, status=?0 or 1 as on/off?, toolbar=?0 or 1 as on/off?, location=?0 or 1 as on/off?, menubar=?0 or 1 as on/off?, directories=?0 or 1 as on/off?, resizable=?0 or 1 as on/off?, scrollbars=?0 or 1 as on/off?');
+        }
+
+        function close_popup() {
+            if (popwin != null) {
+                popwin.close();
+                popwin = null;
+            }
+        }
+
+        function checkKey() {
+            var key = String.fromCharCode(window.event.keyCode);
+            if (key == '?a letter, e.g. A?') {
+                alert("You pressed the ?a letter, e.g. A? key");
+            }
+        }
+    </script>
+</head>
+
+<body onload='alert("?some text?");' onunload='alert("?some text?");' onkeypress='window.status="?some text?" + String.fromCharCode(window.event.keyCode) ;' onkeyup='window.status="?some text?"; checkKey() ;'>
+    Pop-up a window with information by moving over
+    <a href='#' onmouseover='open_popup(); window.status="Hovering over the link" ; return true ;' onmouseout='close_popup(); window.status=" " ; return true ;'>here</a>.
+    <p>Pop-up a window with information by holding mouse button down <a href='#' onmousedown='open_popup();' onmouseup='close_popup();'>here</a>.
+        <p><a href='#' ondblclick='open_popup();'>Double click to open</a>, <a href='#' onclick='close_popup();'>single click to close here</a>.
+            <p>
+                <a href='#' style='font-size="x-large"' onmousemove='open_popup();'>?some text?</a>,
+                <a style='font-size="x-large"' href='#' onmousemove='close_popup();'>?some text?</a>.
+                <p>Press <b>?a letter, e.g. A?</b> to make an alert window pop up.
+                    <p>Hold down a key to see what it is in the status bar.
+</body>
+
+</Html>

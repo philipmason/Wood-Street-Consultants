@@ -1,0 +1,53 @@
+<html>
+<head>
+<script language = "JavaScript">
+var Chevrolet = new Array("Camaro","Corvette","Cavalier","Impala","Malibu","Monte Carlo","Prizm");
+var Ford = new Array("Crown Victoria","Escort","Focus","Mustang","Taurus","Thunderbird");
+var Oldsmobile = new Array("Alero","Aurora","Intrigue");
+var Pontiac = new Array("Bonneville","Firebird","Grand Am","Grand Prix","Sunfire");
+
+function oselect(Title)
+{
+var mselect = window.document.form1.box2;
+var selection = eval(Title);
+var offset=0;
+document.form1.box2.options.length=0
+for (loopy=0; loopy < 4; loopy++)
+	{
+	var selection = window.document.form1.box1.options[loopy].text;
+	var sel = window.document.form1.box1.options[loopy].selected;
+	var obj=eval(selection);
+	if (sel==true) 
+		{
+//		alert(obj+' '+offset) ;
+		setopt(window.document.form1.box2, obj, offset);
+		offset+=obj.length ;
+//		alert('pos='+pos+' offset='+offset);
+		}
+	}
+	}
+function setopt(sel, selection, start)
+{
+for (loop=0; loop < selection.length; loop++)
+	{
+	pos=loop+start;
+	document.form1.box2.options[pos]=new Option(selection[loop], selection[loop], true, false)
+//	sel.options[pos].text = selection[loop];
+	}
+}
+</script>
+</head>
+<BODY>
+<form name="form1">
+<select multiple name="box1"
+onChange="oselect(window.document.form1.box1.options[selectedIndex].text);">
+<option selected>Chevrolet
+<option>Ford
+<option>Oldsmobile
+<option>Pontiac
+</select>
+<select name="box2" multiple size="7">
+</select>
+</form>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style> 
+#header {
+    background-color:black;
+	font: bold 12px/30px Georgia, serif;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#section1 {
+    line-height:30px;
+    background-color:#fff;
+    height:45%;
+    width:100%;
+    float:left;
+    padding:5px;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+</style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#section1").load("http://d351tq92/SASStoredProcess/do?_program=%2FUser+Folders%2Fphil%2FMy+Folder%2FExercise+4",
+		$("#form").serialize())
+    });
+	$("#section2").load("http://d351tq92/SASStoredProcess/do?_program=%2FUser+Folders%2Fphil%2FMy+Folder%2Fjqgrid4")
+});
+    </script>
+</head>
+
+<body>
+
+<header>
+	<div id="header">
+        <form id="form">
+			Debug Options: <select name="_debug">   
+				<option value=" ">None</option> 
+				<option value="log">Log</option> 
+				<option value="time">Time</option> 
+				</select>
+			Product Line: <select name="product_line">   
+				<option value="Children">Children</option>  
+				<option value="Clothes & Shoes">Clothes & Shoes</option> 
+				<option value="Outdoors" selected>Outdoors</option> 
+				<option value="Sports">Sports</option>  
+				</select> 
+        </form>
+		<button>Execute</button>
+	</div>
+</header>
+ 
+<div id="section1">
+<section>
+	<h2>Section1</h2>
+</section>
+</div>
+ 
+<div id="footer">
+<footer>
+	<h2>Footer</h2>
+</footer>
+</div>
+</body>
+
+</html>

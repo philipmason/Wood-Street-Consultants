@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.charts.com/lib/muze/core/latest/themes/muze.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.charts.com/lib/muze/core/latest/muze.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$.ajax({
+				url: 'http://d351tq92/SASStoredProcess/do?_program=%2FUser+Folders%2Fphil%2FMy+Folder%2Fexample7',
+				success: function (data) {
+					console.log("SUCCESS:");
+					console.log(data);
+					const schema = [{
+						name: "Date",
+						type: "dimension"
+					}, {
+						name: "Advertised",
+						type: "dimension"
+					}, {
+						name: "Holiday",
+						type: "dimension"
+					}, {
+						name: "Product",
+						type: "dimension"
+					}, {
+						name: "Price",
+						type: "measure"
+					}, {
+						name: "QtySold",
+						type: "measure"
+					}];
+					const DataModel = muze.DataModel;
+					const dm = new DataModel(data['sashelp.snacks'], schema);
+					console.log(dm);
+
+					const env = muze();
+					const canvas = env.canvas();
+					canvas
+						.data(dm)
+						.width(1200)
+						.height(800)
+						.rows(["Product"])
+						.columns(["Price", "QtySold"], [])
+						.color("Holiday")
+						.legend({
+							align: "horizontal",
+							steps: 6
+						})
+						.mount("#chart-container");
+				}, // success
+				error: function (data) {
+					console.log("ERROR:");
+				} // error
+			}); // ajax
+		}) // end ready
+	</script>
+</head>
+
+<body>
+	<div id="chart-container">
+	</div>
+</body>
+
+</html>

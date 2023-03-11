@@ -1,0 +1,1 @@
+These data sources need to be put into a directory on the web server or application server that is accessible from the HTML/JavaScript that uses them.

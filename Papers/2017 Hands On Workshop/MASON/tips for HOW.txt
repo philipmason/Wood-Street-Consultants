@@ -1,0 +1,1 @@
+* If you are using some HTML which calls a stored process, then sometimes it wont seem to work. This can be caused by you not having authenticated to the SAS system. So if you just run a stored process directly, and authenticate then this can fix this problem.

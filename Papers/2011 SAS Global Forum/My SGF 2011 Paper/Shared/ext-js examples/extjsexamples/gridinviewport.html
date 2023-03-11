@@ -1,0 +1,92 @@
+<html>
+<head>
+	<title>Template</title>
+	<link rel="stylesheet" type="text/css" href="http://xs103:8080/ext-js/resources/css/ext-all.css" />
+	<script src="http://xs103:8080/ext-js/adapter/ext/ext-base.js"></script>
+	<script src="http://xs103:8080/ext-js/ext-all-debug.js"></script>
+
+	<script>
+
+	olddata = [
+			{"country":"England"},
+			{"country":"Nothern Ireland"},
+			{"country":"Poland"},
+			{"country":"Scotland"},
+			{"country":"Wales"}
+		];
+
+	var storea = new Ext.data.JsonStore({	      
+		fields: ['country'],
+		data: olddata,
+		autoload: true
+	});
+
+	var colmodela = new Ext.grid.ColumnModel([
+		{id: 'country',header: 'Country', dataindex: 'country', width: 100}
+	]);
+	
+	var storetoload=storea;
+	colmodeltouse=colmodela;
+
+	var newfields = 'country';
+	var newdata = [
+		{"country":"Australia"},
+		{"country":"New Zealand"},
+		{"country":"South Africa"}
+		];
+	var newcolmodel = new Ext.grid.ColumnModel([
+		{id: 'country',header: 'Tri-Nations', dataindex: 'country', width: 100}
+	]);
+
+	Ext.onReady(function(){	
+		
+		var viewport = new Ext.Viewport({
+			layout: 'border',
+			renderTo: Ext.getBody(),
+			id: 'myportal',
+			items: [{
+				region: 'north',
+				xtype: 'toolbar',
+				height: 27,
+				items: 
+				[{
+					xtype: 'tbspacer'	
+				},{
+					xtype:'tbbutton',
+					text: 'Switch Data',
+					handler: function(btn){
+						if (colmodeltouse == colmodela) {
+							storea.loadData(newdata);
+							colmodeltouse=newcolmodel;
+						} else {
+							storea.loadData(olddata);
+							colmodeltouse=colmodela;
+						}
+						var myref= Ext.getCmp('myportal').findById('mygrid');
+						myref.reconfigure(storea,colmodeltouse);							
+					}
+				}]
+			},{
+				region: 'west',
+				width: 50,
+				xtype: 'panel',
+				html: 'West'
+			},{
+				region: 'center',
+				xtype: 'grid',
+				id: 'mygrid',
+				store: storetoload,
+				cm: colmodeltouse
+			}
+			]
+		});
+	});
+
+	</script>
+
+</head>
+
+<body>
+</body>
+
+</html>

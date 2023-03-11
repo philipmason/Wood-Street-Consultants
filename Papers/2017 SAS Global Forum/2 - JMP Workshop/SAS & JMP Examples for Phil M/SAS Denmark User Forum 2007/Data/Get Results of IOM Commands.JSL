@@ -1,0 +1,5 @@
+ClearGlobals();
+
+If(SASIsConnected(), SASDisConnect());
+SetPathVariable("$JMP2SAS", "/D:/JMP2SAS");			// JMP Env variable
+Open("$JMP2SAS/FitMissMI.sas7bdat");

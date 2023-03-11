@@ -1,0 +1,353 @@
+@mixin no-select {
+  -moz-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-select:ignore;
+  
+  cursor:default;
+}
+
+@mixin important-no-border-radius {
+  //we need to hard code this so we can declare !important
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -khtml-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+// options: matte, bevel, glossy, recessed, flat
+@mixin background-gradient($bg-color, $type: $base-gradient, $direction: top) {
+  background-color: $bg-color;
+  
+  @if $include-highlights {
+    @if $type == bevel {
+      @include background-image(linear-gradient($direction, color_stops(lighten($bg-color, 15%), lighten($bg-color, 8%) 30%, $bg-color 65%, darken($bg-color, 6%))));
+
+    } @else if $type == panel-header {
+      @include background-image(linear-gradient($direction, color_stops(lighten($bg-color, 4%), lighten($bg-color, 5%) 49%, darken($bg-color, 3%) 50%, darken($bg-color, 3%) 51%, $bg-color)));
+    
+    } @else if $type == glossy-button {
+      @include background-image(linear-gradient($direction, color_stops(#F7F7F7, #F1F1F1 48%, #DADADA 52%, #DFDFDF)));
+    } @else if $type == glossy-button-over {
+      @include background-image(linear-gradient($direction, color_stops(#E4F3FF, #D9EDFF 48%, #C2D8F2 52%, #C6DCF6)));
+    } @else if $type == glossy-button-pressed {
+      @include background-image(linear-gradient($direction, color_stops(#B6CBE4, #BFD2E6 48%, #8DC0F5 52%, #98C5F5)));
+          
+    } @else if $type == glossy {
+      @include background-image(linear-gradient($direction, color_stops(lighten($bg-color, 15%), lighten($bg-color, 5%) 50%, $bg-color 51%, darken($bg-color, 5%))));
+    } @else if $type == recessed {
+      @include background-image(linear-gradient($direction, color_stops(darken($bg-color, 10%), darken($bg-color, 5%) 10%, $bg-color 65%, lighten($bg-color, .5%))));
+    } @else if $type == matte {
+      @include background-image(linear-gradient($direction, color_stops(lighten($bg-color, 3%), darken($bg-color, 4%))));
+    } @else if $type == matte-reverse {
+      @include background-image(linear-gradient($direction, color_stops(darken($bg-color, 6%), lighten($bg-color, 4%))));
+    } @else if $type == tab {
+      @include background-image(linear-gradient($direction, color_stops(lighten($bg-color, 2%), darken($bg-color, 2%) 80%, darken($bg-color, 9%))));
+    } @else if $type == glossy-toolbar {
+      @include background-image(linear-gradient($direction, color_stops(#F0F5FA, #DAE6F4 2%, #CEDDEF)));
+    }
+  }
+}
+
+@mixin x-frame($cls, $ui: null, $border-radius: 0px, $border-width: 0px, $padding: null, $background-color: null, $background-gradient: null) {
+  @if $padding == null {
+    $padding: $border-radius;
+  }
+  $cls-ui: $cls;
+  @if $ui != null {
+    $cls-ui: $cls + '-' + $ui;
+  }
+  
+  $padding-top: x_box_nth($padding, 1);/* - nth($border-width, 1);*/
+  $padding-right: x_box_nth($padding, 2); /*- nth($border-width, 2);*/
+  $padding-bottom: x_box_nth($padding, 3); /*- nth($border-width, 3);*/
+  $padding-left: x_box_nth($padding, 4);/* - nth($border-width, 4);*/
+  
+  $frame-padding-top: x_box_nth($border-radius, 1) - x_box_nth($border-width, 1);
+  $frame-padding-right: x_box_nth($border-radius, 2) - x_box_nth($border-width, 2);
+  $frame-padding-bottom: x_box_nth($border-radius, 3) - x_box_nth($border-width, 3);
+  $frame-padding-left: x_box_nth($border-radius, 4) - x_box_nth($border-width, 4);
+  
+  @if $padding-top < $frame-padding-top {
+    $padding-top: $frame-padding-top;
+  }
+  @if $padding-right < $frame-padding-right {
+    $padding-right: $frame-padding-right;
+  }
+  @if $padding-bottom < $frame-padding-bottom {
+    $padding-bottom: $frame-padding-bottom;
+  }
+  @if $padding-left < $frame-padding-left {
+    $padding-left: $frame-padding-left;
+  }
+   
+  .#{$prefix}-#{$cls-ui}-framed {
+    @include border-radius($border-radius);
+    padding: $padding-top $padding-right $padding-bottom $padding-left;
+    border-width: $border-width;
+    border-style: solid;
+    @if $background-color != null {
+      @if $background-gradient != null {
+        @include background-gradient($background-color, $background-gradient);
+      }
+      @else {
+        background-color: $background-color;
+      }      
+    }
+  }
+  
+  .ext-nbr {
+    .#{$prefix}-#{$cls-ui}-framed {
+      padding: 0;
+      border: 0;
+      @include border-radius(0px);
+      @if $background-color != null {
+        background-image: none;
+        background-color: transparent;
+      }
+      @else {
+        background: #fff;
+      }
+    }
+    
+    .#{$prefix}-#{$cls-ui}-tl,
+    .#{$prefix}-#{$cls-ui}-bl,
+    .#{$prefix}-#{$cls-ui}-tr,
+    .#{$prefix}-#{$cls-ui}-br,
+    .#{$prefix}-#{$cls-ui}-tc,
+    .#{$prefix}-#{$cls-ui}-bc {
+      background-image: theme-image($theme-name, '#{$cls}/#{$cls-ui}-corners.png');
+      background-repeat: no-repeat;
+    }
+
+    .#{$prefix}-#{$cls-ui}-tl {
+      background-position: 0 (-1 * (x_box_nth($border-radius, 1) * 2));
+    }
+    .#{$prefix}-#{$cls-ui}-tr {
+      background-position: right (-1 * (x_box_nth($border-radius, 1) * 3));
+    }
+    .#{$prefix}-#{$cls-ui}-tc {
+      height: x_box_nth($border-radius, 1);
+      background-repeat: repeat-x;
+    }
+    
+    .#{$prefix}-#{$cls-ui}-bl {
+      background-position: 0 (-1 * (x_box_nth($border-radius, 1) * 4));
+    }
+    .#{$prefix}-#{$cls-ui}-br {
+      background-position: right (-1 * (x_box_nth($border-radius, 1) * 5));
+    }    
+    .#{$prefix}-#{$cls-ui}-bc {
+      height: x_box_nth($border-radius, 3);
+      background-repeat: repeat-x;
+      background-position: 0 (-1 * (x_box_nth($border-radius, 1)));
+    }
+
+    .#{$prefix}-#{$cls-ui}-ml,
+    .#{$prefix}-#{$cls-ui}-mr {
+      background-image: theme-image($theme-name, '#{$cls}/#{$cls-ui}-sides.png');
+      background-position: right 0;
+      @if $background-gradient == null {
+        background-repeat: repeat-y;
+      }
+    }
+        
+    .#{$prefix}-#{$cls-ui}-ml {
+      background-position: 0 0;
+    }
+    
+    .#{$prefix}-#{$cls-ui}-tl,
+    .#{$prefix}-#{$cls-ui}-ml,
+    .#{$prefix}-#{$cls-ui}-bl {
+      padding-left: x_box_nth($border-radius, 4);
+    }
+    .#{$prefix}-#{$cls-ui}-tr,
+    .#{$prefix}-#{$cls-ui}-mr,
+    .#{$prefix}-#{$cls-ui}-br {
+      padding-right: x_box_nth($border-radius, 2);
+    }
+
+    $padding-top: $padding-top - (x_box_nth($border-radius, 1) - x_box_nth($border-width, 1));
+    $padding-right: $padding-right - (x_box_nth($border-radius, 2) - x_box_nth($border-width, 2));
+    $padding-bottom: $padding-bottom - (x_box_nth($border-radius, 3) - x_box_nth($border-width, 3));
+    $padding-left: $padding-left - (x_box_nth($border-radius, 4) - x_box_nth($border-width, 4));
+
+    @if $padding-top < 0 {
+      $padding-top: 0;
+    }
+    @if $padding-right < 0 {
+      $padding-right: 0;
+    }
+    @if $padding-bottom < 0 {
+      $padding-bottom: 0;
+    }
+    @if $padding-left < 0 {
+      $padding-left: 0;
+    }
+    
+    .#{$prefix}-#{$cls-ui}-mc {
+      @if $background-gradient != null {
+        background-repeat: repeat-x;
+        background-image: theme-image($theme-name, '#{$cls}/#{$cls-ui}-bg.png');
+        background-position: 0 (-1 * $frame-padding-top);
+      }
+      @if $background-color != null {
+        background-color: $background-color;
+      }
+      padding: $padding-top $padding-right $padding-bottom $padding-left;
+    }    
+  }
+}
+
+@mixin x-btn(
+  $ui,  
+  
+  $border-radius: null,
+  
+  $border-width: null,
+      
+  $border-color: null,
+  $border-color-over: null,
+  $border-color-pressed: null,
+  
+  $padding: null,
+  
+  $background-color: null,
+  $background-color-over: null,
+  $background-color-pressed: null,
+  
+  $background-gradient: null,
+  $background-gradient-over: null,
+  $background-gradient-pressed: null,
+  
+  $color: null,
+  $color-over: null,
+  $color-pressed: null,
+  
+  $font-size: null,
+  $font-size-over: null,
+  $font-size-pressed: null,
+  
+  $font-weight: null,
+  $font-weight-over: null,
+  $font-weight-pressed: null,
+  
+  $font-family: null,
+  $font-family-over: null,
+  $font-family-pressed: null
+) {
+  .#{$prefix}-btn-#{$ui} {
+      border-color: $border-color;
+  }
+  
+  @include x-frame('btn', $ui, $border-radius, $border-width, $padding, $background-color, $background-gradient);
+  
+  .#{$prefix}-btn-#{$ui} button {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    font-family: $font-family;
+    color: $color;
+  }
+  
+  .#{$prefix}-btn-#{$ui}-over {
+    @if $border-color-over != $border-color {
+      border-color: $border-color-over;
+    }
+    @if $background-color-over != null {
+      @if $background-gradient-over != $background-gradient {
+        @include background-gradient($background-color-over, $background-gradient-over);
+      }
+      @else if $background-color-over != $background-color {
+        background-color: $background-color-over;
+      }
+    }
+            
+    button {
+      @if $color-over != $color {
+        color: $color-over;
+      }
+      @if $font-weight-over != $font-weight {
+        font-weight: $font-weight-over;
+      }
+      @if $font-size-over != $font-size {
+        font-size: $font-size-over;
+      }
+      @if $font-family-over != $font-family {
+        font-family: $font-family-over;
+      } 
+    }
+  }
+  
+  .#{$prefix}-btn-#{$ui}-pressed {
+    @if $border-color-pressed != $border-color {
+      border-color: $border-color-pressed;
+    }
+    @if $background-color-pressed != null {
+      @if $background-gradient-pressed != $background-gradient {
+        @include background-gradient($background-color-pressed, $background-gradient-pressed);
+      }
+      @else if $background-color-pressed != $background-color {
+        background-color: $background-color-pressed;
+      }
+    }
+            
+    button {
+      @if $color-pressed != $color {
+        color: $color-pressed;
+      }
+      @if $font-weight-pressed != $font-weight {
+        font-weight: $font-weight-pressed;
+      }
+      @if $font-size-pressed != $font-size {
+        font-size: $font-size-pressed;
+      }
+      @if $font-family-pressed != $font-family {
+        font-family: $font-family-pressed;
+      } 
+    }
+  }
+  
+  .ext-nbr {
+    .#{$prefix}-btn-#{$ui}-over {
+      .#{$prefix}-frame-tl,
+      .#{$prefix}-frame-bl,
+      .#{$prefix}-frame-tr,
+      .#{$prefix}-frame-br,
+      .#{$prefix}-frame-tc,
+      .#{$prefix}-frame-bc {
+        background-image: theme-image($theme-name, 'btn/btn-#{$ui}-over-corners.png');
+      }
+      .#{$prefix}-frame-ml,
+      .#{$prefix}-frame-mr {
+        background-image: theme-image($theme-name, 'btn/btn-#{$ui}-over-sides.png');
+      }
+      .#{$prefix}-frame-mc {
+        @if $background-gradient != null {
+          background-repeat: repeat-x;
+          background-image: theme-image($theme-name, 'btn/btn-#{$ui}-over-bg.png');
+        }
+      }    
+    }
+    .#{$prefix}-btn-#{$ui}-pressed {
+      .#{$prefix}-frame-tl,
+      .#{$prefix}-frame-bl,
+      .#{$prefix}-frame-tr,
+      .#{$prefix}-frame-br,
+      .#{$prefix}-frame-tc,
+      .#{$prefix}-frame-bc {
+        background-image: theme-image($theme-name, 'btn/btn-#{$ui}-pressed-corners.png');
+      }
+      .#{$prefix}-frame-ml,
+      .#{$prefix}-frame-mr {
+        background-image: theme-image($theme-name, 'btn/btn-#{$ui}-pressed-sides.png');
+      }
+      .#{$prefix}-frame-mc {
+        @if $background-gradient != null {
+          background-repeat: repeat-x;
+          background-image: theme-image($theme-name, 'btn/btn-#{$ui}-pressed-bg.png');
+        }
+      }    
+    }
+  }
+};

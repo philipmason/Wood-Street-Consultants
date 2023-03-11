@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("p").on({
+        mouseenter: function(){
+            $(this).css("background-color", "?a color such as lightgray?");
+        },  
+        mouseleave: function(){
+            $(this).css("background-color", "?a color such as lightblue?");
+        }, 
+        click: function(){
+            $(this).css("background-color", "?a color such as yellow?");
+        }  
+    });
+    $(".?name of first class?").click(function(){
+        $("p").slideUp();
+    });
+    $(".?name of second class?").click(function(){
+        $("p").slideDown();
+    });	
+});
+</script>
+</head>
+<body>
+
+<p>Click or move the mouse pointer over this paragraph.</p>
+
+<button class="?name of first class?">Slide up</button>
+<button class="?name of second class?">Slide down</button>
+
+</body>
+</html>

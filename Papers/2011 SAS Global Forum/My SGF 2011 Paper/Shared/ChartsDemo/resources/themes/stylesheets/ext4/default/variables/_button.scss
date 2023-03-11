@@ -1,0 +1,76 @@
+/**
+ * @class Ext.Button
+ */
+
+$button-small-border-radius: 4px !default;
+$button-small-border-width: 1px !default;
+$button-small-padding: 4px !default;
+$button-small-font-size: 11px !default;
+$button-small-font-size-over: 11px !default;
+$button-small-font-size-pressed: 11px !default;
+$button-small-font-weight: normal !default;
+$button-small-font-weight-over: normal !default;
+$button-small-font-weight-pressed: normal !default;
+$button-small-font-family: Tahoma, Arial, Verdana, sans-serif !default;
+$button-small-font-family-over: Tahoma, Arial, Verdana, sans-serif !default;
+$button-small-font-family-pressed: Tahoma, Arial, Verdana, sans-serif !default;
+
+$button-medium-border-radius: 4px !default;
+$button-medium-border-width: 1px !default;
+$button-medium-padding: 6px !default;
+$button-medium-font-size: 12px !default;
+$button-medium-font-size-over: 12px !default;
+$button-medium-font-size-pressed: 12px !default;
+$button-medium-font-weight: normal !default;
+$button-medium-font-weight-over: normal !default;
+$button-medium-font-weight-pressed: normal !default;
+$button-medium-font-family: Tahoma, Arial, Verdana, sans-serif !default;
+$button-medium-font-family-over: Tahoma, Arial, Verdana, sans-serif !default;
+$button-medium-font-family-pressed: Tahoma, Arial, Verdana, sans-serif !default;
+
+$button-large-border-radius: 4px !default;
+$button-large-border-width: 1px !default;
+$button-large-padding: 8px !default;
+$button-large-font-size: 13px !default;
+$button-large-font-size-over: 13px !default;
+$button-large-font-size-pressed: 13px !default;
+$button-large-font-weight: normal !default;
+$button-large-font-weight-over: normal !default;
+$button-large-font-weight-pressed: normal !default;
+$button-large-font-family: Tahoma, Arial, Verdana, sans-serif !default;
+$button-large-font-family-over: Tahoma, Arial, Verdana, sans-serif !default;
+$button-large-font-family-pressed: Tahoma, Arial, Verdana, sans-serif !default;
+
+$button-default-base-color: #DFDFDF !default;
+$button-default-border-color: darken($button-default-base-color, 10%) !default;
+$button-default-border-color-over: darken($button-default-base-color, 10%) !default;
+$button-default-border-color-pressed: darken($button-default-base-color, 10%) !default;
+$button-default-background-color: $button-default-base-color !default;
+$button-default-background-color-over: lighten($button-default-base-color, 4%) !default;
+$button-default-background-color-pressed: darken($button-default-base-color, 2%) !default;
+$button-default-background-gradient: 'glossy-button' !default;
+$button-default-background-gradient-over: 'glossy-button-over' !default;
+$button-default-background-gradient-pressed: 'glossy-button-pressed' !default;
+$button-default-color: #333 !default;
+$button-default-color-over: #333 !default;
+$button-default-color-pressed: #333 !default;
+
+ /*
+ //default button
+ $default-button-base-color: #DFDFDF !default;
+ $default-button-over-base-color: lighten($default-button-base-color, 4);
+ $default-button-active-base-color: darken($default-button-base-color, 2);
+ $default-button-background-gradient: 'glossy-button';
+ $default-button-over-background-gradient: 'glossy-button-over';
+ $default-button-active-background-gradient: 'glossy-button-click';
+ $default-button-border-color: darken($default-button-base-color, 10);
+ $default-button-over-border-color: false;
+ $default-button-active-border-color: darken($default-button-active-base-color, 8);
+ $default-button-inner-border-color: rgba(255, 255, 255, .3);
+ $default-button-inner-over-border-color: false;
+ $default-button-inner-active-border-color: rgba(255, 255, 255, .3);
+
+ //size
+ $button-small-icon-size: 16px;
+ $button-medium-icon-size: 24px;
+ $button-large-icon-size: 32px;*/

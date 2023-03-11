@@ -1,0 +1,98 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0\stshfdbch0\stshfloch0\stshfhich0\stshfbi0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f10\fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}
+{\f36\fmodern\fcharset0\fprq1{\*\panose 020b0609020202020204}SAS Monospace;}{\f37\froman\fcharset238\fprq2 Times New Roman CE;}{\f38\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f40\froman\fcharset161\fprq2 Times New Roman Greek;}
+{\f41\froman\fcharset162\fprq2 Times New Roman Tur;}{\f42\froman\fcharset177\fprq2 Times New Roman (Hebrew);}{\f43\froman\fcharset178\fprq2 Times New Roman (Arabic);}{\f44\froman\fcharset186\fprq2 Times New Roman Baltic;}
+{\f45\froman\fcharset163\fprq2 Times New Roman (Vietnamese);}{\f47\fswiss\fcharset238\fprq2 Arial CE;}{\f48\fswiss\fcharset204\fprq2 Arial Cyr;}{\f50\fswiss\fcharset161\fprq2 Arial Greek;}{\f51\fswiss\fcharset162\fprq2 Arial Tur;}
+{\f52\fswiss\fcharset177\fprq2 Arial (Hebrew);}{\f53\fswiss\fcharset178\fprq2 Arial (Arabic);}{\f54\fswiss\fcharset186\fprq2 Arial Baltic;}{\f55\fswiss\fcharset163\fprq2 Arial (Vietnamese);}{\f57\fmodern\fcharset238\fprq1 Courier New CE;}
+{\f58\fmodern\fcharset204\fprq1 Courier New Cyr;}{\f60\fmodern\fcharset161\fprq1 Courier New Greek;}{\f61\fmodern\fcharset162\fprq1 Courier New Tur;}{\f62\fmodern\fcharset177\fprq1 Courier New (Hebrew);}
+{\f63\fmodern\fcharset178\fprq1 Courier New (Arabic);}{\f64\fmodern\fcharset186\fprq1 Courier New Baltic;}{\f65\fmodern\fcharset163\fprq1 Courier New (Vietnamese);}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;
+\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;
+\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{\ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \snext0 Normal;}{
+\s1\ql \li0\ri0\sb240\sa360\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\f1\fs32\lang2057\langfe1033\kerning32\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext0 \sautoupd \styrsid13858962 heading 1;}{
+\s2\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel1\adjustright\rin0\lin0\itap0 \b\i\f1\fs28\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext0 \styrsid13858962 heading 2;}{\*\cs10 \additive \ssemihidden 
+Default Paragraph Font;}{\*\ts11\tsrowd\trftsWidthB3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3\trcbpat1\trcfpat1\tscellwidthfts0\tsvertalt\tsbrdrt\tsbrdrl\tsbrdrb\tsbrdrr\tsbrdrdgl\tsbrdrdgr\tsbrdrh\tsbrdrv 
+\ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs20\lang1024\langfe1024\cgrid\langnp1024\langfenp1024 \snext11 \ssemihidden Normal Table;}{\s15\ql \li0\ri0\widctlpar\brdrt\brdrdb\brdrw10\brsp20 \brdrl\brdrdb\brdrw10\brsp80 
+\brdrb\brdrdb\brdrw10\brsp20 \brdrr\brdrdb\brdrw10\brsp80 \faauto\rin0\lin0\rtlgutter\itap0 \f36\fs16\lang1033\langfe1033\cgrid\langnp1033\langfenp1033 \sbasedon0 \snext15 \sautoupd \styrsid13858962 SAS Code;}{
+\s16\ql \li0\ri0\sb240\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \b\i\f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext16 \styrsid10490657 Comments;}{\s17\ql \li0\ri0\widctlpar
+\tqc\tx4320\tqr\tx8640\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext17 \styrsid13858962 header;}{\s18\ql \li0\ri0\widctlpar
+\tqc\tx4320\tqr\tx8640\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext18 \styrsid13858962 footer;}{\*\cs19 \additive \ul\cf2 \sbasedon10 \styrsid10826060 Hyperlink;}{\*\cs20 
+\additive \ul\cf12 \sbasedon10 \styrsid529645 FollowedHyperlink;}}{\*\listtable{\list\listtemplateid1246688364\listsimple{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'02\'00.;}{\levelnumbers\'01;}\fi-360\li1492\jclisttab\tx1492\lin1492 }{\listname ;}\listid-132}{\list\listtemplateid-181497192\listsimple{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'02\'00.;}{\levelnumbers\'01;}\fi-360\li1209\jclisttab\tx1209\lin1209 }{\listname ;}\listid-131}{\list\listtemplateid467951240\listsimple{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'02\'00.;}{\levelnumbers\'01;}\fi-360\li926\jclisttab\tx926\lin926 }{\listname ;}\listid-130}{\list\listtemplateid375818614\listsimple{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'02\'00.;}{\levelnumbers\'01;}\fi-360\li643\jclisttab\tx643\lin643 }{\listname ;}\listid-129}{\list\listtemplateid583201898\listsimple{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li1492\jclisttab\tx1492\lin1492 }{\listname ;}\listid-128}{\list\listtemplateid-469188682\listsimple{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0
+{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li1209\jclisttab\tx1209\lin1209 }{\listname ;}\listid-127}{\list\listtemplateid1481122798\listsimple{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li926\jclisttab\tx926\lin926 }{\listname ;}\listid-126}{\list\listtemplateid323105212\listsimple{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1
+\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li643\jclisttab\tx643\lin643 }{\listname ;}\listid-125}{\list\listtemplateid854476296\listsimple{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360\jclisttab\tx360\lin360 }{\listname ;}\listid-120}{\list\listtemplateid-490462384\listsimple{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li360\jclisttab\tx360\lin360 }{\listname ;}\listid-119}{\list\listtemplateid-730975934\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0
+\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698689\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li720\jclisttab\tx720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1
+\levelspace360\levelindent0{\leveltext\leveltemplateid67698691\'01o;}{\levelnumbers;}\f2\fbias0 \fi-360\li1440\jclisttab\tx1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext
+\leveltemplateid67698693\'01\u-3929 ?;}{\levelnumbers;}\f10\fbias0 \fi-360\li2160\jclisttab\tx2160\lin2160 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698689
+\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li2880\jclisttab\tx2880\lin2880 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698691\'01o;}{\levelnumbers;}
+\f2\fbias0 \fi-360\li3600\jclisttab\tx3600\lin3600 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698693\'01\u-3929 ?;}{\levelnumbers;}\f10\fbias0 \fi-360\li4320
+\jclisttab\tx4320\lin4320 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698689\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li5040\jclisttab\tx5040\lin5040 }
+{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698691\'01o;}{\levelnumbers;}\f2\fbias0 \fi-360\li5760\jclisttab\tx5760\lin5760 }{\listlevel\levelnfc23\levelnfcn23
+\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698693\'01\u-3929 ?;}{\levelnumbers;}\f10\fbias0 \fi-360\li6480\jclisttab\tx6480\lin6480 }{\listname ;}\listid238560247}}{\*\listoverridetable
+{\listoverride\listid238560247\listoverridecount0\ls1}{\listoverride\listid-119\listoverridecount0\ls2}{\listoverride\listid-125\listoverridecount0\ls3}{\listoverride\listid-126\listoverridecount0\ls4}{\listoverride\listid-127\listoverridecount0\ls5}
+{\listoverride\listid-128\listoverridecount0\ls6}{\listoverride\listid-120\listoverridecount0\ls7}{\listoverride\listid-129\listoverridecount0\ls8}{\listoverride\listid-130\listoverridecount0\ls9}{\listoverride\listid-131\listoverridecount0\ls10}
+{\listoverride\listid-132\listoverridecount0\ls11}}{\*\rsidtbl \rsid204817\rsid281964\rsid529645\rsid2432114\rsid2499586\rsid2643409\rsid3097471\rsid3162374\rsid3374497\rsid4332308\rsid4466731\rsid4733700\rsid4990991\rsid5116567\rsid5580402\rsid5851956
+\rsid6231857\rsid6821119\rsid9254908\rsid10490657\rsid10554649\rsid10711022\rsid10826060\rsid11101038\rsid11484378\rsid13646137\rsid13858962\rsid14187881\rsid14303539\rsid14707760\rsid14816953\rsid15533573\rsid15606616\rsid15949532\rsid16139853}
+{\*\generator Microsoft Word 10.0.2627;}{\info{\title Daily Tip 1}{\operator Phil Mason}{\creatim\yr2003\mo5\dy27\hr13\min39}{\revtim\yr2003\mo5\dy28\hr14\min27}{\version6}{\edmins65}{\nofpages1}{\nofwords266}{\nofchars1522}
+{\*\company Wood Street Consultants Ltd.}{\nofcharsws1785}{\vern16437}}\paperw11907\paperh16840\margl1134\margr1134\margt1134\margb1134 \widowctrl\ftnbj\aenddoc\noxlattoyen\expshrtn\noultrlspc\dntblnsbdb\nospaceforul\hyphcaps0\formshade\horzdoc\dgmargin
+\dghspace120\dgvspace180\dghorigin1134\dgvorigin1134\dghshow2\dgvshow2
+\jexpand\viewkind1\viewscale148\viewzk2\pgbrdrhead\pgbrdrfoot\splytwnine\ftnlytwnine\htmautsp\nolnhtadjtbl\useltbaln\alntblind\lytcalctblwd\lyttblrtgr\lnbrkrule\nobrkwrptbl\snaptogridincell\allowfieldendsel\wrppunct\asianbrkrule\rsidroot3162374 \fet0
+\sectd \psz9\linex0\headery709\footery709\colsx708\endnhere\sectlinegrid360\sectdefaultcl\sectrsid3162374\sftnbj {\header \pard\plain \s17\ql \li0\ri0\widctlpar\tqc\tx4320\tqr\tx8640\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0\pararsid6231857 
+\fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\insrsid10826060\charrsid6231857 
+\par }}{\footer \pard\plain \s18\ql \li0\ri0\widctlpar\tqc\tx4800\tqr\tx9480\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0\pararsid13858962 \fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\insrsid10826060\charrsid13858962 
+\par }}{\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang {\pntxta )}}
+{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl8
+\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}\pard\plain \s17\ql \li0\ri0\widctlpar
+\tqc\tx4800\tqr\tx9480\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0\pararsid6231857 \fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\fs16\insrsid6231857\charrsid6231857 Daily Tip }{\fs16\insrsid14187881 2}{\fs16\insrsid5851956 3}{
+\fs16\insrsid6231857\charrsid6231857 \tab \tab }{\field{\*\fldinst {\fs16\insrsid14303539  SAVEDATE  }}{\fldrslt {\fs16\lang1024\langfe1024\noproof\insrsid11101038 28/05/2003 2:13 PM}}}{\fs16\insrsid6231857\charrsid6231857 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa360\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0\pararsid13858962 \b\f1\fs32\lang2057\langfe1033\kerning32\cgrid\langnp2057\langfenp1033 {\insrsid13646137 
+Putting numbers in macro variables a better way}{\insrsid13858962\charrsid13858962 
+\par }\pard\plain \ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0\pararsid529645 \fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\insrsid4332308 In SAS 9 there is a new function called }{\insrsid5851956 SYMPUTX}{
+\insrsid4332308  which }{\insrsid5851956 creates a macro variable from a numeric}{\insrsid6821119  variable}{\insrsid4733700  without writing a note to the log}{\insrsid5851956 , and trims leading & trailing blanks. }{\insrsid4733700 
+It will use a field up to 32 characters wide and y}{\insrsid6821119 ou can optionally tell it which symbol table to put the macro variable into.
+\par }{\insrsid5851956 The example below show how SAS does an automatic type conversion and uses BEST12.2 to convert a numeric to character in line 44. The following line shows how we can explicitly do
+ the conversion and trim the result. The next line shows how to use SYMPUTX to simplify the process.}{\insrsid529645 
+\par }\pard \ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0\pararsid10490657 {\insrsid16139853 See the following for more information - }{\field\fldedit{\*\fldinst {\insrsid16139853  HYPERLINK "}{\insrsid16139853\charrsid16139853 
+http://v9doc.sas.com/cgi-bin/sasdoc/cgigdoc?file=../proc.hlp/a000146905.htm#a000330615}{\insrsid16139853 " }{\insrsid2499586 {\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b020000001f0000005700000068007400740070003a002f002f007600390064006f0063002e007300610073002e0063006f006d002f006300670069002d00620069006e002f0073006100730064006f0063002f00630067006900670064006f0063003f00660069006c0065003d00
+2e002e002f00700072006f0063002e0068006c0070002f0061003000300030003100340036003900300035002e00680074006d00230061003000300030003300330030003600310035000000e0c9ea79f9bace118c8200aa004ba90b9800000068007400740070003a002f002f007600390064006f0063002e007300610073
+002e0063006f006d002f006300670069002d00620069006e002f0073006100730064006f0063002f00630067006900670064006f0063003f00660069006c0065003d002e002e002f00700072006f0063002e0068006c0070002f0061003000300030003100340036003900300035002e00680074006d0000000b0000006100
+300030003000330033003000360031003500000000000000000000}}}{\fldrslt {\cs19\ul\cf2\insrsid6821119\charrsid6821119 http://v9doc.sas.com/cgi-bin/sasdoc/cgihilt?file=/help/lrdict.hlp/a002295697.htm&query=symputx#~1}}}{\insrsid16139853  }{
+\insrsid10490657\charrsid16139853 
+\par }\pard\plain \s2\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel1\adjustright\rin0\lin0\itap0\pararsid529645 \b\i\f1\fs28\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\insrsid13858962 SAS }{\insrsid15606616 Log}{
+\insrsid529645\charrsid529645 
+\par }\pard\plain \s15\ql \li0\ri0\widctlpar\brdrt\brdrdb\brdrw10\brsp20 \brdrl\brdrdb\brdrw10\brsp80 \brdrb\brdrdb\brdrw10\brsp20 \brdrr\brdrdb\brdrw10\brsp80 \faauto\rin0\lin0\rtlgutter\itap0\pararsid5851956 
+\f36\fs16\lang1033\langfe1033\cgrid\langnp1033\langfenp1033 {\insrsid5851956 42   data test ;
+\par 43     my_val=12345 ;
+\par 44     call symput('value0',my_val) ; * auto conversion done ;
+\par 45     call symput('value1',trim(left(put(my_val,8.)))) ; * v8 ;
+\par 46     call symputx('value2',my_val) ; * SAS 9 ;
+\par 47   run ;
+\par 
+\par }{\cf2\insrsid5851956\charrsid9254908 NOTE: Numeric values have been converted to character values at the places given by:
+\par       (Line):(Column).
+\par       44:24
+\par NOTE: The data set WORK.TEST has 1 observations and 1 variables.
+\par NOTE: DATA statement used (Total process time):
+\par       real time           0.01 seconds
+\par       cpu time            0.01 seconds
+\par }{\insrsid5851956 
+\par 
+\par 48   %put =->&value0<-==->&value1<-==->&value2<-=;
+\par =->       12345<-==->12345<-==->12345<-=
+\par }\pard\plain \s18\ql \li0\ri0\sb360\widctlpar\tqc\tx4800\tqr\tx9480\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0\pararsid5851956 \fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\i\fs20\insrsid6231857\charrsid6231857 
+Example tested under SAS 9.0, Windows 2000}{\fs20\insrsid6231857\charrsid6231857 \tab \tab by Phil Mason
+\par }\pard \s18\ql \li0\ri0\widctlpar\tqc\tx4800\tqr\tx9480\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0\pararsid6231857 {\fs20\insrsid6231857\charrsid6231857 Wood Street Consultants Ltd.\tab \tab }{\field\flddirty{\*\fldinst {
+\fs20\insrsid6231857\charrsid6231857  HYPERLINK "mailto:tips@woodstreet.org.uk" }{\fs20\insrsid2499586\charrsid6231857 {\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000017000000170000007400690070007300400077006f006f0064007300740072006500650074002e006f00720067002e0075006b000000e0c9ea79f9bace118c8200aa004ba90b3c0000006d00610069006c0074006f003a007400690070007300400077006f006f006400
+7300740072006500650074002e006f00720067002e0075006b0000000000000000000000}}}{\fldrslt {\cs19\fs20\ul\cf2\insrsid6231857\charrsid6231857 tips@woodstreet.org.uk}}}{\fs20\insrsid6231857\charrsid6231857  
+\par }{\field\flddirty{\*\fldinst {\fs20\insrsid6231857\charrsid6231857  HYPERLINK "http://www.woodstreet.org.uk" }{\fs20\insrsid2499586\charrsid6231857 {\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000017000000160000007700770077002e0077006f006f0064007300740072006500650074002e006f00720067002e0075006b000000e0c9ea79f9bace118c8200aa004ba90b3c00000068007400740070003a002f002f007700770077002e0077006f006f00640073007400
+72006500650074002e006f00720067002e0075006b002f000000b100000000000000}}}{\fldrslt {\cs19\fs20\ul\cf2\insrsid6231857\charrsid6231857 www.woodstreet.org.uk}}}{\fs20\insrsid10490657\charrsid6231857 
+\par }}
