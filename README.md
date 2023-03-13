@@ -14,4 +14,7 @@ The following are some files to support the paper I presented at Pharmasug 2023 
 * [SAS program](/Log%20Analysis/filecheckwithrules.sas) to check a SAS log using [Rules](/Log%20Analysis/rules.json) in a JSON file
 
 ## SAS Tips Newsletter
-* [Collection of word files](/Tips%20Newsletter/)s
+* [Collection of word files](/Tips%20Newsletter/)
+
+## Papers presented at previous conferences
+* [Year by year list](/Papers/)
