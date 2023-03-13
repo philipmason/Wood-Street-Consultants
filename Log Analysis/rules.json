@@ -1,0 +1,442 @@
+[
+  {
+    "ruleType": "startswith",
+    "startswith": "NOTE:",
+    "prefix": "<span style='color: blue'>",
+    "suffix": "</span>",
+    "anchor": false,
+    "linkColor": "blue",
+    "type": "NOTE",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "(?:^WARNING:)(?!.*PRODUCT WITH WHICH|.*PRODUCT WITH WHICH|.*IS ASSOCIATED WILL EXPIRE|.*MPRINT|.*MLOGIC|.*SYMBOLGEN|.*IS ASSOCIATED IS SCHEDULED TO EXPIRE|.*YOUR SYSTEM IS SCHEDULED TO EXPIRE)",
+    "prefix": "<span style='color: green'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "green",
+    "type": "WARN",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "(?:^ERROR:|^\\s*ERROR\\s+)(?!.*\\*\\*\\* PROBLEM: LINE|.*WITHOUT ERROR|.*MPRINT|.*MLOGIC|.*SYMBOLGEN)",
+    "prefix": "<span style='color: red'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "red",
+    "type": "ERROR",
+    "interesting": true
+  },
+  {
+    "ruleType": "startswith",
+    "startswith": "MPRINT(",
+    "prefix": "<span style='color: darkgray'>",
+    "suffix": "</span>",
+    "anchor": false,
+    "linkColor": "blue",
+    "type": "MPRINT",
+    "interesting": false
+  },
+  {
+    "ruleType": "startswith",
+    "startswith": "===",
+    "prefix": "<span style='background-color: Ivory'>",
+    "suffix": "</span>",
+    "anchor": false,
+    "linkColor": "blue",
+    "type": null,
+    "interesting": false
+  },
+  {
+    "ruleType": "startswith",
+    "startswith": "      real time           ",
+    "prefix": "<span style='color: blue'>",
+    "suffix": "</span>",
+    "anchor": false,
+    "linkColor": "blue",
+    "type": null,
+    "interesting": false
+  },
+  {
+    "ruleType": "startswith",
+    "startswith": "      cpu time            ",
+    "prefix": "<span style='color: blue'>",
+    "suffix": "</span>",
+    "anchor": false,
+    "linkColor": "blue",
+    "type": null,
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "(?:^\\s*FATAL)",
+    "prefix": "<span style='color: red'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "red",
+    "type": "ERROR",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE:.*\\bUNINITIALIZED\\b",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "SERIOUS",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: MISSING",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "SERIOUS",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: AT LEAST ONE W.D FORMAT WAS TOO SMALL FOR THE NUMBER TO BE PRINTED.",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "SERIOUS",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: NUMERIC VALUES HAVE BEEN CONVERTED TO CHARACTER VALUES AT THE PLACES GIVEN BY:",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "SERIOUS",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: THE SAS SYSTEM STOPPED PROCESSING THIS STEP BECAUSE OF ERRORS.",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "SERIOUS",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: ERROR DETECTED IN ANNOTATE= DATASET",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "SERIOUS",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "MERGE statement has more than one data set with repeats of BY values",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "SERIOUS",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "Note: Missing",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "SERIOUS",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "Note: Invalid",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "INFO: The variable",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "W\\.D format was too small",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "values have been converted",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "SAS set option OBS=0",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "outside (of)|(the) axis range",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "was not found or could not be loaded",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: (Library \\w+ does not exist|Libref \\w+ was successfully assigned as follows)",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: Writing \\w+( \\w+)? File:",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "(table|data set) \\w+\\.\\w+ (has 0 observations|created, with 0 rows)",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "contains \\d+ (variables|observations) not in",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "variables have conflicting attributes",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "Number of Observations in",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "notice: dataset",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "the data ?sets \\w+\\.\\w+ and \\w+\\.\\w+",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "unequal",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "(table|data set) (?!WORK\\.\\w+)\\w+\\.\\w+ (has \\d+ observations|created, with \\d+ rows)",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "(notice:|NOTE:[UCB])",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "Division by zero detected",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "Mathematical operation could not be performed",
+    "prefix": "<span style='color: orange'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: Argument \\w+ to function \\w+",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "observations with duplicated? key values were deleted",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "orange",
+    "type": "OTHER",
+    "interesting": true
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: writing ODS PDF(\\(\\w+\\))? ",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: ODS PDF(\\(\\w+\\))? printed\\b",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: (Informat|Format) (\\$)?\\w+ has been (output|written)",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "NOTE: The infile",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "ods +(listing|pdf|_all_)",
+    "prefix": "<span style='color: purple'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "purple",
+    "type": "OTHER",
+    "interesting": false
+  },
+  {
+    "ruleType": "regex",
+    "regex": "\\(SUBMIT_JOB\\): \\d+-\\d+-\\d+T\\d+:\\d+:\\d+ - Submitted REPOSITORY job",
+    "prefix": "<span style='color: magenta'>",
+    "suffix": "</span>",
+    "anchor": true,
+    "linkColor": "magenta",
+    "type": "JOB",
+    "interesting": false
+  }
+]
