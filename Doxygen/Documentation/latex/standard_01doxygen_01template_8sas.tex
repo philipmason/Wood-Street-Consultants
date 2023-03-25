@@ -1,0 +1,104 @@
+\hypertarget{standard_01doxygen_01template_8sas}{}\doxysection{Samples/standard doxygen template.\+sas File Reference}
+\label{standard_01doxygen_01template_8sas}\index{Samples/standard doxygen template.sas@{Samples/standard doxygen template.sas}}
+
+
+This is the brief description of the code.  
+
+
+
+
+\doxysubsection{Detailed Description}
+This is the brief description of the code. 
+
+\begin{DoxyVersion}{Version}
+optional info 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+optional info
+\end{DoxyCopyright}
+This is a more detailed description of what happens in the program. Which can go over multiple lines, and can have SAS code sections\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Proc\ print\ ;}
+\DoxyCodeLine{run;}
+
+\end{DoxyCode}
+ And then can continue on with more description. \begin{DoxyVerb}This is a highlighted block which could be used for code
+because it is indented by some spaces
+\end{DoxyVerb}
+ And back to normal documentation when there is no indent.
+
+I can highlight things like {\bfseries{bold}} text, an {\itshape argument}, some {\itshape emphasized} text, some {\ttfamily code}. You can use html too like\+: {\ttfamily Some code could be here}
+
+Or \uline{Underlined}, {\bfseries{bold}}, ~\newline
+ Normal markdown should work such as {\bfseries{bold}}.
+
+\href{https://doxygen.nl/manual/htmlcmds.html}{\texttt{ HTML Commands}}
+
+\begin{DoxyAuthor}{Author}
+name goes here 
+
+another author name goes here
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+21 Oct 2022 first version of program 
+
+1 Jan 2023 next version
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em parm1} & this is a parameter description \\
+\hline
+\mbox{\texttt{ in}}  & {\em parm2} & this is an input parameter description \\
+\hline
+\mbox{\texttt{ out}}  & {\em parm3} & this is an output parameter description \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em parm4} & this is a parameter description for something that is input and output\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This describes what the code returns
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+Pre-\/condition for using the code, for instance some macro variables need to be set first 
+\end{DoxyPrecond}
+\begin{DoxyWarning}{Warning}
+Warning about how to use the code 
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000003}{Test}}]talk about testing here \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000005}{Todo}}]Record things here that are still to do \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000005}{Bug}}]Record any known bugs here \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Special}
+\item[\mbox{\hyperlink{special__special000004}{Special}}]I can make special lists to gather items from multiple programs documentation.\end{DoxyRefDesc}
+\hypertarget{standard_01doxygen_01template_8sas_autotoc_md43}{}\doxysubparagraph{Output Datasets}\label{standard_01doxygen_01template_8sas_autotoc_md43}
+\begin{DoxyVerb}Libref: mylib
+Path:   /general/biostat/etc.
+
+Dataset Name:                 Description:
+---------------------------   -----------------------------------------------------------------------------------
+dset1                         dataset 1 created for some purpose
+'test_' || job_instance       one or more dataset(s) created
+\end{DoxyVerb}
+ \hypertarget{standard_01doxygen_01template_8sas_autotoc_md44}{}\doxysubparagraph{Output Files}\label{standard_01doxygen_01template_8sas_autotoc_md44}
+\begin{DoxyVerb}Fileref:      -
+Path:         &macvar1.output/&macvar2..html
+Description:  Description of file
+\end{DoxyVerb}
+ \hypertarget{standard_01doxygen_01template_8sas_autotoc_md45}{}\doxysubparagraph{Update History}\label{standard_01doxygen_01template_8sas_autotoc_md45}
+\begin{DoxyVerb}Date            Name                     Description
+-------------   -----------------------  --------------------------------------------------------
+1 Jan 2023      Phil Mason (pmason)      Sample of something that happenned.
+\end{DoxyVerb}
+ \hypertarget{standard_01doxygen_01template_8sas_autotoc_md46}{}\doxysubparagraph{SAS Called}\label{standard_01doxygen_01template_8sas_autotoc_md46}
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{gplot_8sas}{gplot.\+sas}} is used in some way \item b.\+sas some comments about it \item c.\+sas (this one does not exist yet, so doesn\textquotesingle{}t get a link)\end{DoxyItemize}
+\hypertarget{standard_01doxygen_01template_8sas_autotoc_md47}{}\doxysubparagraph{Diagram(s)}\label{standard_01doxygen_01template_8sas_autotoc_md47}
+\hypertarget{standard_01doxygen_01template_8sas_autotoc_md48}{}\doxysubparagraph{Examples}\label{standard_01doxygen_01template_8sas_autotoc_md48}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Proc\ Print\ data=sashep.class\ ;\ run\ ;}
+
+\end{DoxyCode}
+ 
