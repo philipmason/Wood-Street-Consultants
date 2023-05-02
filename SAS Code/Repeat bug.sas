@@ -1,0 +1,11 @@
+data _null_ ;
+  length gap $ 20 ;
+  do i=0 to 4;
+    gap=repeat(' ',i);
+    factor=2*i ;
+    x='|'||repeat(' ',factor)!!'|';
+    l_gap=length(gap);
+    x_len=length(x)-2;
+    put factor= x_len= l_gap= / x= / ;
+  end;
+run;

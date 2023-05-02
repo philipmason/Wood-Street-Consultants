@@ -1,0 +1,14 @@
+* make a copy of a dataset to try audit trails on ;
+data test ;
+  set sashelp.prdsale ;
+run ;
+* define an audit trail and start it recording changes ;
+proc datasets lib=work ;
+  audit test ;
+  initiate ;
+run ; quit ;
+* Edit the dataset, recording changes to audit dataset ;
+dm 'viewtable test;formview;tableaccess;rowlabels;edit' viewtable ;
+*-------------------- Run the following after finishing the edit, to see the changes made --------------------;
+proc print data=test(type=audit) ;
+run ;

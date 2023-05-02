@@ -1,0 +1,11 @@
+ods rtf file = 'c:\test.rtf';
+* This will be in Portrait orientation since that is the default ;
+proc print data = sashelp.class;
+run;
+options orientation = landscape;
+* The option has changed, but now we need to tell RTF that it changed ;
+ods rtf;
+* Now this will be in landscape ;
+proc print data = sashelp.class;
+run;
+ods rtf close;

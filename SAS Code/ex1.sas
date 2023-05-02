@@ -1,0 +1,13 @@
+%macro ClipLog2dset(marker1,marker2,pos=last,dset=log) ;
+ * note: split search text in half so we dont go and find it in our macro call ;
+  options nomprint noxwait xsync ;
+  dm "log;find '&marker1&marker2' &pos;mark;bottom;mark;store;unmark" ;
+ * read from the clipboard ;
+  filename in CLIPBRD ;
+  data &dset ;
+    length line $ 200 ; * make sure its at least as long as log lines ;
+    infile in ;
+    input ;
+    line=_infile_ ; * save lines to a variable called line ;
+  run ;
+%mend ClipLog2dset ;

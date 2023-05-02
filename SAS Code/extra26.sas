@@ -1,0 +1,12 @@
+* keep multiple copies of data sets ;
+data x(genmax=5) ; a=1 ; run ;
+* each time we create the dataset again it makes another generation ;
+data x ; a=2 ; run ;
+data x ; a=3 ; run ;
+data x ; a=4 ; run ;
+* current generation is 0, or just dont specify the one you want ;
+data y ; set x(gennum=0) ; put a= ; run ;
+* generation 2 is the 2nd one created - actually called x#002 ;
+data y ; set x(gennum=2) ; put a= ; run ;
+* generation -1 is the previous one created, not the current one bu the one before ;
+data y ; set x(gennum=-1) ; put a= ; run ;
