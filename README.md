@@ -23,3 +23,21 @@ The following are some files to support the paper I presented at Pharmasug 2023 
 
 ## Papers presented at previous conferences
 * [Year by year list](/Papers/)
+
+## My first book about SAS Tips
+* [In the know - SAS Tips & Techniques from around the globe](/Phil's%20SAS%20Tips%20Book.doc)
+
+## SAS Training Powerpoint Presentations
+* [Advanced Graphics](/Training/Advanced%20Graphics.ppt)
+* [Proc SQL](/Training/Proc%20SQL.ppt)
+* [SAS Advanced Macro Programming](/Training/SAS%20Advanced%20Macro%20Programming.ppt)
+* [SAS Macro Training](/Training/SAS%20Macro%20Training.pptx)
+* [SAS Performance Tips](/Training/SAS%20Performance%20Tips.pptx)
+* [SAS Tips Course](/Training/Tips%20Course%202005.ppt)
+### Short courses
+* [Data _null_](/Training/Data%20_null_.ppt)
+* [ODS](/Training/ODS.ppt)
+* [Proc Print](/Training/Proc%20Print.ppt)
+* [Proc Report](/Training/Proc%20Report.ppt)
+* [Proc Tabulate](/Training/Proc%20Tabulate.ppt)
+* [Proc SQL](/Training/Proc%20SQL.ppt)
