@@ -29,15 +29,15 @@ The following are some files to support the paper I presented at Pharmasug 2023 
 
 ## SAS Training Powerpoint Presentations
 * [Advanced Graphics](/Training/Advanced%20Graphics.ppt)
-* [Proc SQL](/Training/Proc%20SQL.ppt)
+* [Proc SQL](/Training/Proc%20SQL.PPT)
 * [SAS Advanced Macro Programming](/Training/SAS%20Advanced%20Macro%20Programming.ppt)
-* [SAS Macro Training](/Training/SAS%20Macro%20Training.pptx)
+* [SAS Macro Training](/Training/SAS%20MACRO%20TRAINING.pptx)
 * [SAS Performance Tips](/Training/SAS%20Performance%20Tips.pptx)
 * [SAS Tips Course](/Training/Tips%20Course%202005.ppt)
 ### Short courses
-* [Data _null_](/Training/Data%20_null_.ppt)
-* [ODS](/Training/ODS.ppt)
-* [Proc Print](/Training/Proc%20Print.ppt)
-* [Proc Report](/Training/Proc%20Report.ppt)
-* [Proc Tabulate](/Training/Proc%20Tabulate.ppt)
-* [Proc SQL](/Training/Proc%20SQL.ppt)
+* [Data _null_](/Training/SAS%20Short%20Course%20-%20Data%20_null_.ppt)
+* [ODS](/Training/SAS%20Short%20Course%20-%20ODS.ppt)
+* [Proc Print](/Training/SAS%20Short%20Course%20-%20Proc%20Print.ppt)
+* [Proc Report](/Training/SAS%20Short%20Course%20-%20Proc%20Report.ppt)
+* [Proc Tabulate](/Training/SAS%20Short%20Course%20-%20Proc%20Tabulate.ppt)
+* [Proc SQL](/Training/SAS%20Short%20Course%20-%20Proc%20SQL.PPT)
