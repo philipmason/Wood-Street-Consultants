@@ -1,0 +1,30 @@
+10   proc scaproc ;
+11      record "%sysfunc(pathname(work))/example1.txt";
+12   run ;
+
+NOTE: PROCEDURE SCAPROC used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+13   data test ;
+14      set sashelp.prdsale sashelp.prdsal2 ;
+15   run ;
+
+NOTE: There were 1440 observations read from the data set SASHELP.PRDSALE.
+NOTE: There were 23040 observations read from the data set SASHELP.PRDSAL2.
+NOTE: The data set WORK.TEST has 24480 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+16   proc scaproc ;
+17      write ;
+18   run ;
+
+NOTE: PROCEDURE SCAPROC used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
