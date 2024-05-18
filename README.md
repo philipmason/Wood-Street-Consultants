@@ -1,5 +1,10 @@
 # Wood Street Consultants
 
+## Pharmasug 2024
+The following are some files to support the paper I presented at Pharmasug 2023 in Baltimore.
+* [Paper](/Papers/2024/Pharmasug%202024/DS-109.docx)
+* [Slides](/Papers/2024/Pharmasug%202024/DS-109.pptx)
+
 ## Pharmasug 2023
 The following are some files to support the paper I presented at Pharmasug 2023 in San Francisco.
 
