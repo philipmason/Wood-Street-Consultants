@@ -1,5 +1,10 @@
 # Wood Street Consultants
 
+## PHUSE 2024
+The following are some files to support the paper I presented at PHUSE 2024 in Strassbourg, France.
+* [Paper](/Papers/2024/PHUSE%202024/PRE_SM12.pdf)
+* [Slides](/Papers/2024/PHUSE%202024/PRE_SM12.pptx)
+
 ## Pharmasug 2024
 The following are some files to support the paper I presented at Pharmasug 2024 in Baltimore.
 * [Paper](/Papers/2024/Pharmasug%202024/DS-109.docx)
